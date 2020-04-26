@@ -11,8 +11,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Math related library
-import statsmodels.api as sm
 import math
+import statsmodels.api as sm
+import statsmodels.tsa.stattools as ts
 
 # Yahoo Finance for download the stock OHLC prices
 import yfinance as yf
@@ -53,9 +54,11 @@ else:
 
 
 
+CADF_Result_list = pd.DataFrame(columns=['Pairs_Name', 'CADF_result'])
+
 # Define the rolling mean duration
 rolling_mean_duration = 210
-hedge_ratio_duration = 90
+hedge_ratio_duration = 210
 
 def listToString(s):  
     
@@ -102,6 +105,7 @@ def variance_calculator(series,series_average,win_len):
 
 
 def calculate_correlation(Stock_1_file, Stock_2_file, Source_File_Folder):
+    global CADF_Result_list
     
     # Load source file
     stock_1_Close_price = pd.read_csv(Source_File_Folder + Stock_1_file)
@@ -144,6 +148,30 @@ def calculate_correlation(Stock_1_file, Stock_2_file, Source_File_Folder):
     pairs.loc[(pairs['Ratio'] < pairs['Lower_band']),  "Break_Lower"] = True
     #print(pairs)
     
+    
+    # Calculate the hedge ratio
+    model = sm.OLS(pairs.iloc[:hedge_ratio_duration, :1], pairs.iloc[:hedge_ratio_duration, 1:2])
+    model = model.fit() 
+    print('Hedge Ratio =', model.params[0])
+    
+    # Calculate the spread MA and band
+    pairs['Spread'] = pairs[stock_1_name + '_Close'] - model.params[0] * pairs[stock_2_name + '_Close']
+    
+    pairs['Spread_Moving_Avg'] = pairs['Spread'].rolling(rolling_mean_duration).mean()
+    Spread_Sigma = variance_calculator(pairs['Spread'], pairs['Spread_Moving_Avg'], rolling_mean_duration)
+    pairs['Spread_Sigma'] = Spread_Sigma
+    pairs['Spread_Upper_band'] = pairs['Spread_Moving_Avg'].add(pairs['Spread_Sigma'])
+    pairs['Spread_Lower_band'] = pairs['Spread_Moving_Avg'].subtract(pairs['Spread_Sigma'])
+    
+    
+    # Stationarity test
+    CADF_result = ts.adfuller(pairs['Spread'])
+    CADF_Result_list = CADF_Result_list.append({'Pairs_Name' : stock_1_name + ' ' + stock_2_name , 'CADF_result' : CADF_result[0]} , ignore_index=True)
+    print('CAFD_result for ' + stock_1_name + ' ' + stock_2_name + ' :')
+    print(CADF_result[0])
+    
+    # Create graph
+    
     fig, axs = plt.subplots(2, 1, constrained_layout=True,figsize=(16, 12))
     pairs['Ratio'].plot(ax=axs[0], lw=2, label='Ratio')
     pairs['Ratio_Moving_Avg'].plot(ax=axs[0], lw=1,style='--', label='Ratio Moving Avg')
@@ -163,6 +191,17 @@ def calculate_correlation(Stock_1_file, Stock_2_file, Source_File_Folder):
     axs[1].grid()
     axs[1].legend(loc='upper left')
     
+    """
+    pairs['Spread'].plot(ax=axs[2], lw=2, label='Spread')
+    pairs['Spread_Moving_Avg'].plot(ax=axs[2], lw=1,style='--', label='Spread Moving Avg')
+    pairs['Spread_Upper_band'].plot(ax=axs[2], lw= 1,style='--', label='Spread Upper Band')
+    pairs['Spread_Lower_band'].plot(ax=axs[2], lw= 1,style='--', label='Spread Lower Band')
+    axs[2].set_xlabel('Date')
+    axs[2].set_title('Spread Moving Avg')
+    axs[2].set_ylabel('Spread')
+    axs[2].grid()
+    axs[2].legend(loc='upper left')
+    """
     fig.suptitle(stock_1_name + ' VS ' + stock_2_name + ' ' + end_date, fontsize=16)
     fig.savefig(stock_output_path + stock_1_name + ' VS ' + stock_2_name + ' ' + end_date + '.png')
     
@@ -174,7 +213,7 @@ def calculate_correlation(Stock_1_file, Stock_2_file, Source_File_Folder):
 def loop_thru_files_get_signal(target_date, output_df):
     
     target_sources = os.listdir(stock_output_path)
-    target_sources = [s for s in target_sources if target_date in s and '.csv' in s and 'output' not in s]
+    target_sources = [s for s in target_sources if target_date in s and '.csv' in s and 'output' not in s and 'CADF' not in s]
     
     print("Looping thru all the pairs files and searching for signals...")
     
@@ -225,12 +264,17 @@ def loop_thru_combinations(stock_universe_path):
             stock_name_2_path = i[1] + '_' + end_date + '.csv'
             
             calculate_correlation(stock_name_1_path, stock_name_2_path, stock_hist_data_path)
-            #add_hedge_ratio(stock_name_1_path, stock_name_2_path, stock_hist_data_path)
+
     
     print("Pairs data generated!")
             
 
 def draft_email(subject, recipients, dataframe, auto=False): 
+
+    
+    dataframe = dataframe[['Date', 'Pairs_Name','Stock_1_Close', 'Stock_2_Close', 'Ratio', 'Ratio_Moving_Avg', 'Sigma', \
+                          'Upper_band','Lower_band', 'Break_Upper', 'Break_Lower']]
+
     
     outlook = win32.Dispatch('outlook.application')
     mail = outlook.CreateItem(0)
@@ -272,54 +316,16 @@ def draft_email(subject, recipients, dataframe, auto=False):
     else:
         mail.Display()
         
-def add_hedge_ratio(Stock_1_file, Stock_2_file, Source_File_Folder):
-    print('Adding Hedge ratio for pairs')
-    
-    # Load source file
-    stock_1_Close_price = pd.read_csv(Source_File_Folder + Stock_1_file)
-    stock_2_Close_price = pd.read_csv(Source_File_Folder + Stock_2_file)
-    
-    # Extract stock names from source file name
-    stock_1_name = Stock_1_file.split('_')[0]
-    stock_2_name = Stock_2_file.split('_')[0]
-    
-    # Process stock price dataframe
-    stock_1_Close_price.set_index('Date', inplace=True)
-    stock_2_Close_price.set_index('Date', inplace=True)
-    
-    stock_1_Close_price = stock_1_Close_price['Adj Close']
-    stock_2_Close_price = stock_2_Close_price['Adj Close']
-    
-    # Comine two DataFrame
-    pairs = pd.concat([stock_1_Close_price, stock_2_Close_price], axis=1)
-    pairs.reset_index(inplace=True)
-    pairs.columns = ['Date', stock_1_name + '_Close',stock_2_name + '_Close']
-    pairs.set_index('Date', inplace=True)
-    
-    # Drop NA column for those unmatched date
-    pairs.dropna(inplace=True)
-    
-    #print(pairs.iloc[:hedge_ratio_duration, :1])
-    #print(pairs.iloc[:hedge_ratio_duration, 1:2])
-    
-    model = sm.OLS(pairs.iloc[:hedge_ratio_duration, :1], pairs.iloc[:hedge_ratio_duration, 1:2])
-    model = model.fit() 
-    print('Hedge Ratio =', model.params[0])
-    
-    
-    # Calculate the ratio
-    pairs['Ratio'] = pairs[stock_1_name + '_Close'] / pairs[stock_2_name + '_Close']
-    pairs['Spread'] = pairs[stock_1_name + '_Close'] - model.params[0] * pairs[stock_2_name + '_Close']
-    
-    
-    pairs.to_csv(stock_output_path + 'Hedge_ratio_' + stock_1_name + '_' + stock_2_name + '_' + end_date + '.csv')
-    
 
 def main():
+    global CADF_Result_list
     
     output_df = pd.DataFrame(columns=['Date', 'Pairs_Name', 'Stock_1_Close', 'Stock_2_Close', 'Ratio', \
                                                'Ratio_Moving_Avg', 'Sigma', 'Upper_band', 'Lower_band', \
                                                    'Break_Upper', 'Break_Lower'])
+        
+    
+    
     
     Download_stock_price(stock_universe_path, stock_hist_data_path)
 
@@ -327,15 +333,15 @@ def main():
 
     output_df = loop_thru_files_get_signal(end_date, output_df)
     
-    
     # Save output file
     output_df.to_csv(stock_output_path +'output_' + end_date + '.csv')
+    CADF_Result_list.to_csv(stock_output_path +'CADF_Result_list' + end_date + '.csv')
     
     # Draft email
     draft_email('Pairs ratio ' + end_date, 'investment@optimascap.com', output_df,  auto=False)
     
     
-    
+    print(CADF_Result_list)
     
 if __name__ == '__main__':
 
