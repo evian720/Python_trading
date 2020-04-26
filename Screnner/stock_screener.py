@@ -220,40 +220,11 @@ def trading_signal_bollinger_bands(stock_OHLC_Source_path, filename):
     
     print(stock_OHLC)
 
-    
-    
-    """ 
-    plot_x = stock_OHLC.Date
-    plot_y_close = stock_OHLC.Close
-    
-    plt.title('Bollinger Bands Actions')
-    plt.xlabel('Close')
-    plt.ylabel('Time')
-    
-    
-    plt.plot(plot_x, plot_y_close, label='Close Price')
 
-
-    Buy_actions_dates = stock_OHLC.loc[ ( stock_OHLC.Position == 1), 'Date']
-    Sell_actions_dates = stock_OHLC.loc[ ( stock_OHLC.Position == -1), 'Date']
-    
-    for d in Buy_actions_dates:
-        plt.axvline(d,color='red')
-        
-    for d in Sell_actions_dates:
-        plt.axvline(d,color='green')
-    """
     
     # Return
     stock_OHLC['Strategy_return']=stock_OHLC['Position']*stock_OHLC['Return']
     trades = np.count_nonzero(stock_OHLC['Position'])
-    
-    
-    # TEMPPPP
-    sum_stragety_return = stock_OHLC['Strategy_return'].sum()
-    print(sum_stragety_return)
-    
-    
     
     plt.plot((stock_OHLC['Strategy_return']+1).cumprod())
     plt.figtext(0.14,0.9,s='\n\nTrades:%i'%trades)

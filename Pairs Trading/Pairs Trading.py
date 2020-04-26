@@ -5,15 +5,27 @@ Created on Wed Apr 15 23:42:41 2020
 @author: Evian Zhou
 """
 
+# Pandas and Numpy for data manipulation and Matplotlib for ploting
 import pandas as pd
 import numpy as np
-import yfinance as yf
-import datetime
-import math
-import os
-from itertools import combinations
-import threading
+import matplotlib.pyplot as plt
 
+# Math related library
+import statsmodels.api as sm
+import math
+
+# Yahoo Finance for download the stock OHLC prices
+import yfinance as yf
+
+# Basic system function
+import datetime
+import time
+import os
+
+# For solving the combinations and create pairs
+from itertools import combinations
+
+# Ta-lib python library for technical analysis
 import talib
 from talib import MA_Type
 
@@ -21,13 +33,12 @@ from talib import MA_Type
 import win32com.client as win32
 from win32com.client import Dispatch, constants
 
-import time
 
-import matplotlib.pyplot as plt
+# Define the dates and file location
 start_date = '2015-01-01'
 end_date = datetime.datetime.today().strftime("%Y-%m-%d")
 
-stock_universe_path= r'C:\Users\Evian Zhou\Documents\Python\Pairs Trading\Paris.csv'
+stock_universe_path= r'C:\Users\Evian Zhou\Documents\Python\Pairs Trading\Pairs.csv'
 stock_hist_data_path = r'C:\Users\Evian Zhou\Documents\Python\Pairs Trading\Hist_data' + '\\'
 stock_output_path = r'C:\Users\Evian Zhou\Documents\Python\Pairs Trading\Out_put' + '\\' + end_date + '\\'
 
@@ -43,7 +54,8 @@ else:
 
 
 # Define the rolling mean duration
-rolling_mean_duration = 420
+rolling_mean_duration = 210
+hedge_ratio_duration = 90
 
 def listToString(s):  
     
@@ -213,6 +225,7 @@ def loop_thru_combinations(stock_universe_path):
             stock_name_2_path = i[1] + '_' + end_date + '.csv'
             
             calculate_correlation(stock_name_1_path, stock_name_2_path, stock_hist_data_path)
+            #add_hedge_ratio(stock_name_1_path, stock_name_2_path, stock_hist_data_path)
     
     print("Pairs data generated!")
             
@@ -257,7 +270,49 @@ def draft_email(subject, recipients, dataframe, auto=False):
     if auto:
         mail.send
     else:
-        mail.Display()     
+        mail.Display()
+        
+def add_hedge_ratio(Stock_1_file, Stock_2_file, Source_File_Folder):
+    print('Adding Hedge ratio for pairs')
+    
+    # Load source file
+    stock_1_Close_price = pd.read_csv(Source_File_Folder + Stock_1_file)
+    stock_2_Close_price = pd.read_csv(Source_File_Folder + Stock_2_file)
+    
+    # Extract stock names from source file name
+    stock_1_name = Stock_1_file.split('_')[0]
+    stock_2_name = Stock_2_file.split('_')[0]
+    
+    # Process stock price dataframe
+    stock_1_Close_price.set_index('Date', inplace=True)
+    stock_2_Close_price.set_index('Date', inplace=True)
+    
+    stock_1_Close_price = stock_1_Close_price['Adj Close']
+    stock_2_Close_price = stock_2_Close_price['Adj Close']
+    
+    # Comine two DataFrame
+    pairs = pd.concat([stock_1_Close_price, stock_2_Close_price], axis=1)
+    pairs.reset_index(inplace=True)
+    pairs.columns = ['Date', stock_1_name + '_Close',stock_2_name + '_Close']
+    pairs.set_index('Date', inplace=True)
+    
+    # Drop NA column for those unmatched date
+    pairs.dropna(inplace=True)
+    
+    #print(pairs.iloc[:hedge_ratio_duration, :1])
+    #print(pairs.iloc[:hedge_ratio_duration, 1:2])
+    
+    model = sm.OLS(pairs.iloc[:hedge_ratio_duration, :1], pairs.iloc[:hedge_ratio_duration, 1:2])
+    model = model.fit() 
+    print('Hedge Ratio =', model.params[0])
+    
+    
+    # Calculate the ratio
+    pairs['Ratio'] = pairs[stock_1_name + '_Close'] / pairs[stock_2_name + '_Close']
+    pairs['Spread'] = pairs[stock_1_name + '_Close'] - model.params[0] * pairs[stock_2_name + '_Close']
+    
+    
+    pairs.to_csv(stock_output_path + 'Hedge_ratio_' + stock_1_name + '_' + stock_2_name + '_' + end_date + '.csv')
     
 
 def main():
@@ -276,9 +331,10 @@ def main():
     # Save output file
     output_df.to_csv(stock_output_path +'output_' + end_date + '.csv')
     
-
     # Draft email
-    draft_email('Paris ratio ' + end_date, 'investment@optimascap.com', output_df,  auto=False)
+    draft_email('Pairs ratio ' + end_date, 'investment@optimascap.com', output_df,  auto=False)
+    
+    
     
     
 if __name__ == '__main__':
