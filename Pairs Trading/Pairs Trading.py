@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 """
 Created on Wed Apr 15 23:42:41 2020
@@ -14,6 +15,7 @@ import matplotlib.pyplot as plt
 import math
 import statsmodels.api as sm
 import statsmodels.tsa.stattools as ts
+from johansen import coint_johansen
 
 # Yahoo Finance for download the stock OHLC prices
 import yfinance as yf
@@ -39,18 +41,18 @@ from win32com.client import Dispatch, constants
 start_date = '2015-01-01'
 end_date = datetime.datetime.today().strftime("%Y-%m-%d")
 
-stock_universe_path= r'C:\Users\Evian Zhou\Documents\Python\Pairs Trading\Pairs.csv'
-stock_hist_data_path = r'C:\Users\Evian Zhou\Documents\Python\Pairs Trading\Hist_data' + '\\'
-stock_output_path = r'C:\Users\Evian Zhou\Documents\Python\Pairs Trading\Out_put' + '\\' + end_date + '\\'
+stock_universe_path = r'C:\Users\Evian Zhou\Documents\Python\Pairs Trading\Pairs.csv'
+stock_hist_data_path = r'C:\Users\Evian Zhou\Documents\Python Trading Output\Pairs Trading\Hist_data' + '\\'
+stock_output_path = r'C:\Users\Evian Zhou\Documents\Python Trading Output\Pairs Trading\Out_put' + '\\' + end_date + '\\'
 
 
 # Create folder for output
 try:
     os.mkdir(stock_output_path)
 except OSError:
-    print ("Creation of the directory %s failed" % stock_output_path)
+    print("Creation of the directory %s failed" % stock_output_path)
 else:
-    print ("Successfully created the directory %s " % stock_output_path)
+    print("Successfully created the directory %s " % stock_output_path)
 
 
 
@@ -58,17 +60,16 @@ CADF_Result_list = pd.DataFrame(columns=['Pairs_Name', 'CADF_result'])
 
 # Define the rolling mean duration
 rolling_mean_duration = 210
-hedge_ratio_duration = 210
+hedge_ratio_duration = 30
 
-def listToString(s):  
-    
+def listToString(s):      
     # initialize an empty string 
     str1 = ""  
     
     # traverse in the string   
     for ele in s:  
         str1 += ele   
-    
+
     # return string   
     return str1  
 
@@ -96,12 +97,13 @@ def Download_stock_price(stock_universe_path, stock_hist_data_path):
 
 
 def variance_calculator(series,series_average,win_len):
-	sma = win_len
-	temp = series.subtract(series_average)
-	temp2 = temp.apply(lambda x: x**2)
-	temp3 = temp2.rolling(sma).mean()
-	sigma = temp3.apply(lambda x : math.sqrt(x))
-	return sigma
+    sma = win_len
+    temp = series.subtract(series_average)
+    temp2 = temp.apply(lambda x: x**2)
+    temp3 = temp2.rolling(sma).mean()
+    sigma = temp3.apply(lambda x : math.sqrt(x))
+    
+    return sigma
 
 
 def calculate_correlation(Stock_1_file, Stock_2_file, Source_File_Folder):
@@ -153,7 +155,7 @@ def calculate_correlation(Stock_1_file, Stock_2_file, Source_File_Folder):
     model = sm.OLS(pairs.iloc[:hedge_ratio_duration, :1], pairs.iloc[:hedge_ratio_duration, 1:2])
     model = model.fit() 
     print('Hedge Ratio =', model.params[0])
-    
+    pairs['Hedge_Ratio'] = model.params[0]
     # Calculate the spread MA and band
     pairs['Spread'] = pairs[stock_1_name + '_Close'] - model.params[0] * pairs[stock_2_name + '_Close']
     
@@ -164,15 +166,31 @@ def calculate_correlation(Stock_1_file, Stock_2_file, Source_File_Folder):
     pairs['Spread_Lower_band'] = pairs['Spread_Moving_Avg'].subtract(pairs['Spread_Sigma'])
     
     
-    # Stationarity test
+    # CADF Stationarity test
     CADF_result = ts.adfuller(pairs['Spread'])
     CADF_Result_list = CADF_Result_list.append({'Pairs_Name' : stock_1_name + ' ' + stock_2_name , 'CADF_result' : CADF_result[0]} , ignore_index=True)
-    print('CAFD_result for ' + stock_1_name + ' ' + stock_2_name + ' :')
-    print(CADF_result[0])
+    print('CAFD_result for ' + stock_1_name + ' ' + stock_2_name + ' : %.3f' % CADF_result[0])
+    print('CAFD Critial values:')
+    for key, value in CADF_result[4].items():
+        print('\t%s: %.3f' % (key, value))
+        
+        
+    # Johansen Stationarity test
+    result = coint_johansen(pairs.iloc[:,:2] ,0 ,1)
+    d = result.evec
+    ev= d[0]
+
+    # Normalizing the eigenvectors
+    ev = ev/ev[0]
+
+    print(ev[0])
+    # Printing the mean reverting spread
+    #print("\nSpread = {}.GLD + ({}).GDX".format(ev[0],ev[1]))
+    #print(d)
     
     # Create graph
     
-    fig, axs = plt.subplots(2, 1, constrained_layout=True,figsize=(16, 12))
+    fig, axs = plt.subplots(3, 1, constrained_layout=True,figsize=(16, 12))
     pairs['Ratio'].plot(ax=axs[0], lw=2, label='Ratio')
     pairs['Ratio_Moving_Avg'].plot(ax=axs[0], lw=1,style='--', label='Ratio Moving Avg')
     pairs['Upper_band'].plot(ax=axs[0], lw= 1,style='--', label='Upper Band')
@@ -191,7 +209,7 @@ def calculate_correlation(Stock_1_file, Stock_2_file, Source_File_Folder):
     axs[1].grid()
     axs[1].legend(loc='upper left')
     
-    """
+    
     pairs['Spread'].plot(ax=axs[2], lw=2, label='Spread')
     pairs['Spread_Moving_Avg'].plot(ax=axs[2], lw=1,style='--', label='Spread Moving Avg')
     pairs['Spread_Upper_band'].plot(ax=axs[2], lw= 1,style='--', label='Spread Upper Band')
@@ -201,7 +219,7 @@ def calculate_correlation(Stock_1_file, Stock_2_file, Source_File_Folder):
     axs[2].set_ylabel('Spread')
     axs[2].grid()
     axs[2].legend(loc='upper left')
-    """
+    
     fig.suptitle(stock_1_name + ' VS ' + stock_2_name + ' ' + end_date, fontsize=16)
     fig.savefig(stock_output_path + stock_1_name + ' VS ' + stock_2_name + ' ' + end_date + '.png')
     
@@ -323,9 +341,6 @@ def main():
     output_df = pd.DataFrame(columns=['Date', 'Pairs_Name', 'Stock_1_Close', 'Stock_2_Close', 'Ratio', \
                                                'Ratio_Moving_Avg', 'Sigma', 'Upper_band', 'Lower_band', \
                                                    'Break_Upper', 'Break_Lower'])
-        
-    
-    
     
     Download_stock_price(stock_universe_path, stock_hist_data_path)
 
