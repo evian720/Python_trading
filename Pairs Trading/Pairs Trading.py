@@ -42,9 +42,16 @@ start_date = '2015-01-01'
 end_date = datetime.datetime.today().strftime("%Y-%m-%d")
 
 stock_universe_path = r'C:\Users\Evian Zhou\Documents\Python\Pairs Trading\Pairs.csv'
-stock_hist_data_path = r'C:\Users\Evian Zhou\Documents\Python Trading Output\Pairs Trading\Hist_data' + '\\'
+stock_hist_data_path = r'C:\Users\Evian Zhou\Documents\Python Trading Output\Pairs Trading\Hist_data' + '\\' + end_date + '\\'
 stock_output_path = r'C:\Users\Evian Zhou\Documents\Python Trading Output\Pairs Trading\Out_put' + '\\' + end_date + '\\'
 
+# Create folder for Source Data
+try:
+    os.mkdir(stock_hist_data_path)
+except OSError:
+    print("Creation of the directory %s failed" % stock_hist_data_path)
+else:
+    print("Successfully created the directory %s " % stock_hist_data_path)
 
 # Create folder for output
 try:
