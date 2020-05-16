@@ -22,22 +22,39 @@ import matplotlib.pyplot as plt
 """
 Definitions
 """
-stock_universe_path= r'C:\Users\Evian Zhou\Documents\Python\Screnner\stock universe.csv'
-index_universe_path = r'C:\Users\Evian Zhou\Documents\Python\Screnner\index universe.csv'
-
-stock_hist_data_path = r'C:\Users\Evian Zhou\Documents\Python\Screnner\Hist_Data' + '\\'
-stock_processed_data_path = r'C:\Users\Evian Zhou\Documents\Python\Screnner\Processed_Data' + '\\'
-
-
-# Technical Analysis Data Output
-stochastic_oscillator_path = r'C:\Users\Evian Zhou\Documents\Python\Screnner\Stochastic_Oscillator' + '\\'
-bollinger_bands_path = r'C:\Users\Evian Zhou\Documents\Python\Screnner\Bollinger_Bands' + '\\'
-MACD_path = r'C:\Users\Evian Zhou\Documents\Python\Screnner\MACD' + '\\'
-
-
 
 start_date = '2015-01-01'
 end_date = datetime.datetime.today().strftime("%Y-%m-%d")
+
+stock_universe_path= r'E:\Python\Screnner\stock universe.csv'
+index_universe_path = r'E:\Python\Screnner\index universe.csv'
+
+stock_hist_data_path = r'E:\Python Trading Output\Stock_OHLC' + '\\' + end_date + '\\'
+stock_processed_data_path = r'E:\Python Trading Output\Screnner\Processed_Data' + '\\' + end_date + '\\'
+
+
+# Technical Analysis Data Output
+stochastic_oscillator_path = r'E:\Python Trading Output\Screnner\Stochastic_Oscillator' + '\\'
+bollinger_bands_path = r'E:\Python Trading Output\Screnner\Bollinger_Bands' + '\\'
+MACD_path = r'E:\Python Trading Output\Screnner\MACD' + '\\'
+
+
+# Create folder for Source Data
+try:
+    os.mkdir(stock_hist_data_path)
+except OSError:
+    print("Creation of the directory %s failed" % stock_hist_data_path)
+else:
+    print("Successfully created the directory %s " % stock_hist_data_path)
+
+try:
+    os.mkdir(stock_processed_data_path)
+except OSError:
+    print("Creation of the directory %s failed" % stock_processed_data_path)
+else:
+    print("Successfully created the directory %s " % stock_processed_data_path)
+
+
 
 """
 ========================================================================
@@ -68,14 +85,13 @@ def Download_stock_price(stock_universe_path, stock_hist_data_path):
 """
 
 def Add_indicator(stock_OHLC_Source_path, filename, stock_OHLC_Output_path):
-    
-
-    
-    stock_OHLC = pd.read_csv(stock_OHLC_Source_path + filename)
+    stock_OHLC = pd.read_csv(stock_OHLC_Source_path)
     
     # SMA
     sma_period = 20
     lma_period = 50
+    
+    print("Adding indicator for: %s" % filename)
     
     stock_OHLC['SMA'] = talib.SMA(stock_OHLC['Adj Close'], timeperiod = sma_period)
     stock_OHLC['LMA'] = talib.SMA(stock_OHLC['Adj Close'], timeperiod = lma_period)
@@ -121,15 +137,15 @@ def Add_indicator(stock_OHLC_Source_path, filename, stock_OHLC_Output_path):
 
 
 def Add_indicator_all(target_date):
-    target_sources = os.listdir(stock_hist_data_path)
-    target_sources = [s for s in target_sources if target_date in s]
-    
-    for filename in target_sources: 
-        filepath = stock_hist_data_path + filename
-        Add_indicator(stock_hist_data_path, filename, stock_processed_data_path)
-        
-        print("Add indicator for " + filename + " complete!")
 
+    stock_universe = pd.read_csv(stock_universe_path)
+    stock_universe = stock_universe.values.tolist()
+    
+    for i in stock_universe:
+        filename = i[0] + '_' + target_date + '.csv'
+        filepath = stock_hist_data_path + i[0] + '_' + target_date + '.csv'
+        Add_indicator(filepath, filename, stock_processed_data_path)
+    
 """
 ========================================================================
 """
@@ -310,29 +326,67 @@ def trading_signal_MACD_all(target_date):
         print("Add MACD for " + filename + " complete!")
 
 
+
+def Loop_thru_Universe(target_date):
+
+    stock_universe = pd.read_csv(stock_universe_path)
+    stock_universe = stock_universe.values.tolist()
+    
+    
+    RSI14_DF = pd.DataFrame(columns=['Pairs_Name', 'RSI14'])
+    
+    
+    for i in stock_universe:
+        filename = i[0] + '_' + target_date + '.csv'
+        filepath = stock_processed_data_path + i[0] + '_' + target_date + '.csv'
+
+        RSI14_DF = Sceener_RSI(filepath, filename, RSI14_DF)
+
+    print(RSI14_DF)
+
+def Sceener_RSI(filepath, filename, RSI14_DF):
+    
+    stock_name = filename.split('_')[0]
+    
+    stock_df = pd.read_csv(filepath)
+    
+    # Only check the last row
+    stock_df = stock_df.iloc[[-1]]
+    stock_df = stock_df[(stock_df['RSI14'] > 70) | (stock_df['RSI14'] < 40 )][['Date','RSI14']]
+    stock_df['Pairs_Name'] = stock_name
+    if not stock_df.empty:
+        RSI14_DF = pd.concat([RSI14_DF, stock_df])
+
+
+
+    return RSI14_DF
+
 """
 ========================================================================
 ========================================================================
 """
+
+
 
 
 def main():
-    Download_stock_price(stock_universe_path, stock_hist_data_path)
-    Download_stock_price(index_universe_path, stock_hist_data_path)
+    #Download_stock_price(stock_universe_path, stock_hist_data_path)
+    #ownload_stock_price(index_universe_path, stock_hist_data_path)
 
-    Add_indicator_all(end_date)
-    #Add_indicator(stock_hist_data_path, '^HSI_2020-04-13.csv', stock_processed_data_path)
-    
-    traing_signal_stochastic_oscillator_all(end_date)
+    #Add_indicator_all(end_date)
+   
+    #traing_signal_stochastic_oscillator_all(end_date)
     
     
     #trading_signal_bollinger_bands(stock_processed_data_path + '0027.HK_2020-04-12.csv', '0027.HK_2020-04-12.csv')
-    trading_signal_bollinger_bands_all(end_date)
+    #trading_signal_bollinger_bands_all(end_date)
     
     #trading_signal_arbr(stock_processed_data_path + '^HSI_2020-04-13.csv', '^HSI_2020-04-13.csv')
     #trading_signal_MACD(stock_processed_data_path + '0700.HK_2020-04-13.csv', '0700.HK_2020-04-13.csv')
     
-    trading_signal_MACD_all(end_date)
+    #trading_signal_MACD_all(end_date)
+    
+    Loop_thru_Universe(end_date)
     
 if __name__ == '__main__':
 

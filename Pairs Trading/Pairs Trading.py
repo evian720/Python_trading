@@ -16,6 +16,7 @@ import math
 import statsmodels.api as sm
 import statsmodels.tsa.stattools as ts
 from johansen import coint_johansen
+from statsmodels.regression.rolling import RollingOLS
 
 # Yahoo Finance for download the stock OHLC prices
 import yfinance as yf
@@ -41,9 +42,9 @@ from win32com.client import Dispatch, constants
 start_date = '2015-01-01'
 end_date = datetime.datetime.today().strftime("%Y-%m-%d")
 
-stock_universe_path = r'C:\Users\Evian Zhou\Documents\Python\Pairs Trading\Pairs.csv'
-stock_hist_data_path = r'C:\Users\Evian Zhou\Documents\Python Trading Output\Pairs Trading\Hist_data' + '\\' + end_date + '\\'
-stock_output_path = r'C:\Users\Evian Zhou\Documents\Python Trading Output\Pairs Trading\Out_put' + '\\' + end_date + '\\'
+stock_universe_path = r'E:\Python\Pairs Trading\Pairs.csv'
+stock_hist_data_path = r'E:\Python Trading Output\Stock_OHLC' + '\\' + end_date + '\\'
+stock_output_path = r'E:\Python Trading Output\Pairs Trading\Out_put' + '\\' + end_date + '\\'
 
 # Create folder for Source Data
 try:
@@ -68,6 +69,7 @@ CADF_Result_list = pd.DataFrame(columns=['Pairs_Name', 'CADF_result'])
 # Define the rolling mean duration
 rolling_mean_duration = 210
 hedge_ratio_duration = 30
+hedge_ratio_rolling_duration = 210
 
 def listToString(s):      
     # initialize an empty string 
@@ -112,6 +114,13 @@ def variance_calculator(series,series_average,win_len):
     
     return sigma
 
+def hedge_ratio_calculator(df_1, df_2):
+    model = sm.OLS(df_1, df_1)
+    model = model.fit() 
+    print('Hedge Ratio =', model.params[0])
+    
+    return model.params[0]
+    
 
 def calculate_correlation(Stock_1_file, Stock_2_file, Source_File_Folder):
     global CADF_Result_list
@@ -131,7 +140,16 @@ def calculate_correlation(Stock_1_file, Stock_2_file, Source_File_Folder):
     stock_1_Close_price = stock_1_Close_price['Adj Close']
     stock_2_Close_price = stock_2_Close_price['Adj Close']
     
+    # Drop Duplicates:
+    #stock_1_Close_price = stock_1_Close_price[stock_1_Close_price.drop_duplicates(keep='last')]
+    #stock_1_Close_price = stock_2_Close_price[stock_2_Close_price.drop_duplicates(keep='last')]
+    #stock_1_Close_price.drop_duplicates(keep='last', inplace = True)
+    #stock_2_Close_price.drop_duplicates(keep='last', inplace = True)
+    
+    print(stock_2_Close_price.tail())
+    
     # Comine two DataFrame
+    print("Concating Dataframe for %s and %s" %(stock_1_name, stock_2_name ))
     pairs = pd.concat([stock_1_Close_price, stock_2_Close_price], axis=1)
     pairs.reset_index(inplace=True)
     pairs.columns = ['Date', stock_1_name + '_Close',stock_2_name + '_Close']
@@ -163,8 +181,22 @@ def calculate_correlation(Stock_1_file, Stock_2_file, Source_File_Folder):
     model = model.fit() 
     print('Hedge Ratio =', model.params[0])
     pairs['Hedge_Ratio'] = model.params[0]
+    
+    #fit
+    model_rolling = RollingOLS(endog=pairs.iloc[:, :1] , exog=pairs.iloc[:, 1:2],window=hedge_ratio_rolling_duration)
+    rres = model_rolling.fit()
+    rres_result = rres.params
+    #rres.params.tail() #get intercept and coef
+    print("***")
+    rres_result.rename(columns={rres_result.columns[0]: "Hedge_Ratio_Rolling"}, inplace = True)
+    print(rres_result)
+    print("***")
+    pairs = pd.concat([pairs, rres_result], axis=1)
+    pairs['Hedge_Ratio_Rolling'].fillna(method='bfill', inplace=True)
+    
     # Calculate the spread MA and band
-    pairs['Spread'] = pairs[stock_1_name + '_Close'] - model.params[0] * pairs[stock_2_name + '_Close']
+    #pairs['Spread'] = pairs[stock_1_name + '_Close'] - model.params[0] * pairs[stock_2_name + '_Close']
+    pairs['Spread'] = pairs[stock_1_name + '_Close'] - pairs['Hedge_Ratio_Rolling'] * pairs[stock_2_name + '_Close']
     
     pairs['Spread_Moving_Avg'] = pairs['Spread'].rolling(rolling_mean_duration).mean()
     Spread_Sigma = variance_calculator(pairs['Spread'], pairs['Spread_Moving_Avg'], rolling_mean_duration)
@@ -196,6 +228,7 @@ def calculate_correlation(Stock_1_file, Stock_2_file, Source_File_Folder):
     #print(d)
     
     # Create graph
+    print("Creating Plot for %s and %s" %(stock_1_name, stock_2_name ))
     
     fig, axs = plt.subplots(3, 1, constrained_layout=True,figsize=(16, 12))
     pairs['Ratio'].plot(ax=axs[0], lw=2, label='Ratio')
