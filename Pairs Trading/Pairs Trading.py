@@ -17,6 +17,7 @@ import statsmodels.api as sm
 import statsmodels.tsa.stattools as ts
 from johansen import coint_johansen
 from statsmodels.regression.rolling import RollingOLS
+from hurst import compute_Hc
 
 # Yahoo Finance for download the stock OHLC prices
 import yfinance as yf
@@ -42,9 +43,9 @@ from win32com.client import Dispatch, constants
 start_date = '2015-01-01'
 end_date = datetime.datetime.today().strftime("%Y-%m-%d")
 
-stock_universe_path = r'E:\Python\Pairs Trading\Pairs.csv'
-stock_hist_data_path = r'E:\Python Trading Output\Stock_OHLC' + '\\' + end_date + '\\'
-stock_output_path = r'E:\Python Trading Output\Pairs Trading\Out_put' + '\\' + end_date + '\\'
+stock_universe_path = r'U:\Python\Pairs Trading\Pairs.csv'
+stock_hist_data_path = r'U:\Python Trading Output\Stock_OHLC' + '\\' + end_date + '\\'
+stock_output_path = r'U:\Python Trading Output\Pairs Trading\Out_put' + '\\' + end_date + '\\'
 
 # Create folder for Source Data
 try:
@@ -68,7 +69,7 @@ CADF_Result_list = pd.DataFrame(columns=['Pairs_Name', 'CADF_result'])
 
 # Define the rolling mean duration
 rolling_mean_duration = 210
-hedge_ratio_duration = 30
+hedge_ratio_duration = 210
 hedge_ratio_rolling_duration = 210
 
 def listToString(s):      
@@ -173,14 +174,21 @@ def calculate_correlation(Stock_1_file, Stock_2_file, Source_File_Folder):
     # Check if break
     pairs.loc[(pairs['Ratio'] > pairs['Upper_band']), "Break_Upper"] = True
     pairs.loc[(pairs['Ratio'] < pairs['Lower_band']),  "Break_Lower"] = True
-    #print(pairs)
+    
+    
+    print(pairs)
     
     
     # Calculate the hedge ratio
-    model = sm.OLS(pairs.iloc[:hedge_ratio_duration, :1], pairs.iloc[:hedge_ratio_duration, 1:2])
+    model = sm.OLS(pairs.iloc[-hedge_ratio_duration:, :1], pairs.iloc[-hedge_ratio_duration:, 1:2])
     model = model.fit() 
     print('Hedge Ratio =', model.params[0])
     pairs['Hedge_Ratio'] = model.params[0]
+    #pairs['Half_Life'] =  -np.log(2) / model.params[0]
+    
+    print("*****************************")
+    print(-np.log(2) / model.params[0])
+    print("*****************************")
     
     #fit
     model_rolling = RollingOLS(endog=pairs.iloc[:, :1] , exog=pairs.iloc[:, 1:2],window=hedge_ratio_rolling_duration)
@@ -194,6 +202,7 @@ def calculate_correlation(Stock_1_file, Stock_2_file, Source_File_Folder):
     pairs = pd.concat([pairs, rres_result], axis=1)
     pairs['Hedge_Ratio_Rolling'].fillna(method='bfill', inplace=True)
     
+    
     # Calculate the spread MA and band
     #pairs['Spread'] = pairs[stock_1_name + '_Close'] - model.params[0] * pairs[stock_2_name + '_Close']
     pairs['Spread'] = pairs[stock_1_name + '_Close'] - pairs['Hedge_Ratio_Rolling'] * pairs[stock_2_name + '_Close']
@@ -204,10 +213,37 @@ def calculate_correlation(Stock_1_file, Stock_2_file, Source_File_Folder):
     pairs['Spread_Upper_band'] = pairs['Spread_Moving_Avg'].add(pairs['Spread_Sigma'])
     pairs['Spread_Lower_band'] = pairs['Spread_Moving_Avg'].subtract(pairs['Spread_Sigma'])
     
+    # Half_Life
+    print("*** Half Life ***")
+    pairs_spread = pairs['Spread'].iloc[-hedge_ratio_duration:,]
+    
+    # Spread and differenence between spread
+    spread_x = np.mean(pairs_spread) - pairs_spread 
+    spread_y = pairs_spread.shift(-1) - pairs_spread
+    
+    spread_df = pd.DataFrame({'x':spread_x,'y':spread_y})
+    spread_df = spread_df.dropna()
+    
+    # Theta as regression beta between spread and difference between spread
+    model_s = sm.OLS(spread_df['y'], spread_df['x'])
+    model_s = model_s.fit() 
+    theta=  model_s.params[0]
+    # Type your code below
+    Half_Life = math.log(2)/theta
+    Half_Life = round(Half_Life, 2)
+    print(Half_Life)
+    pairs['Half_Life'] = Half_Life
+    
+    # Hurst Exponent
+    H, c, data = compute_Hc(pairs_spread)
+    print("*** Hurst exponent ***")
+    H = round(H, 2)
+    print(H)
+    pairs['Hurst_Exponent'] = H
     
     # CADF Stationarity test
     CADF_result = ts.adfuller(pairs['Spread'])
-    CADF_Result_list = CADF_Result_list.append({'Pairs_Name' : stock_1_name + ' ' + stock_2_name , 'CADF_result' : CADF_result[0]} , ignore_index=True)
+    CADF_Result_list = CADF_Result_list.append({'Pairs_Name' : stock_1_name + ' ' + stock_2_name , 'CADF_result' : CADF_result[0], 'Half_Life' : Half_Life, 'Hurst_Exponent': H} , ignore_index=True)
     print('CAFD_result for ' + stock_1_name + ' ' + stock_2_name + ' : %.3f' % CADF_result[0])
     print('CAFD Critial values:')
     for key, value in CADF_result[4].items():
@@ -221,11 +257,7 @@ def calculate_correlation(Stock_1_file, Stock_2_file, Source_File_Folder):
 
     # Normalizing the eigenvectors
     ev = ev/ev[0]
-
     print(ev[0])
-    # Printing the mean reverting spread
-    #print("\nSpread = {}.GLD + ({}).GDX".format(ev[0],ev[1]))
-    #print(d)
     
     # Create graph
     print("Creating Plot for %s and %s" %(stock_1_name, stock_2_name ))
@@ -331,7 +363,7 @@ def draft_email(subject, recipients, dataframe, auto=False):
 
     
     dataframe = dataframe[['Date', 'Pairs_Name','Stock_1_Close', 'Stock_2_Close', 'Ratio', 'Ratio_Moving_Avg', 'Sigma', \
-                          'Upper_band','Lower_band', 'Break_Upper', 'Break_Lower']]
+                          'Upper_band','Lower_band', 'Break_Upper', 'Break_Lower','Half_Life']]
 
     
     outlook = win32.Dispatch('outlook.application')
@@ -380,7 +412,7 @@ def main():
     
     output_df = pd.DataFrame(columns=['Date', 'Pairs_Name', 'Stock_1_Close', 'Stock_2_Close', 'Ratio', \
                                                'Ratio_Moving_Avg', 'Sigma', 'Upper_band', 'Lower_band', \
-                                                   'Break_Upper', 'Break_Lower'])
+                                                   'Break_Upper', 'Break_Lower', 'Half_life'])
     
     Download_stock_price(stock_universe_path, stock_hist_data_path)
 
@@ -393,7 +425,7 @@ def main():
     CADF_Result_list.to_csv(stock_output_path +'CADF_Result_list' + end_date + '.csv')
     
     # Draft email
-    draft_email('Pairs ratio ' + end_date, 'investment@optimascap.com', output_df,  auto=False)
+    draft_email('Pairs ratio ' + end_date, 'investment@optimascap.com,stephen.tong@hld.com', output_df,  auto=False)
     
     
     print(CADF_Result_list)
