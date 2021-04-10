@@ -1,0 +1,671 @@
+2021-04-04 03:20:59.766406-04:00: Try brokerClient IB port=7496
+2021-04-04 03:21:01.821749-04:00: Hint 1: Enable API.
+2021-04-04 03:21:01.822749-04:00: Hint 2: Maybe the port number does not match.
+2021-04-04 03:21:01.824748-04:00: Try brokerClient IB port=7497
+2021-04-04 03:21:03.879768-04:00: Hint 1: Enable API.
+2021-04-04 03:21:03.879768-04:00: Hint 2: Maybe the port number does not match.
+2021-04-04 03:21:03.880767-04:00: Try brokerClient IB port=4001
+2021-04-04 03:21:05.924337-04:00: Hint 1: Enable API.
+2021-04-04 03:21:05.925337-04:00: Hint 2: Maybe the port number does not match.
+2021-04-04 03:21:05.929334-04:00: broker_client_factory.CallBacks::error: errorId=-1 errorCode=504 errorMessage=Not connected
+2021-04-04 03:21:05.929334-04:00: broker_client_factory.CallBacks::_print_version:IBridgePy version= 15.1.7
+2021-04-04 03:38:07.438577-04:00: Try brokerClient IB port=7496
+2021-04-04 03:38:07.481530-04:00: port=7496 is correct and set port to userConfig.brokerClientConfig.IB_CLIENT
+2021-04-04 03:38:07.481530-04:00: Connected to IB is successful using port=7496
+2021-04-04 03:38:07.485527-04:00: IBridgePy version 15.1.7
+2021-04-04 03:38:07.486526-04:00: fileName = C:\Users\Evian Zhou\Documents\Python\Hedger\IB_Trading_Bot.py
+2021-04-04 03:38:07.531501-04:00: ####    Starting to initialize trader    ####
+2021-04-04 03:38:07.532500-04:00: ##    ACCOUNT Balance  U8139800  ##
+2021-04-04 03:38:07.533499-04:00: CASH=1424596.39
+2021-04-04 03:38:07.534499-04:00: portfolio_value=2561404.0
+2021-04-04 03:38:07.535498-04:00: positions_value=2416183.01
+2021-04-04 03:38:07.536498-04:00: ##    POSITIONS U8139800   ##
+2021-04-04 03:38:07.537497-04:00: Symbol Amount Cost_basis
+2021-04-04 03:38:07.537497-04:00: STK,,,002230,CNH 1000 37.1837582
+2021-04-04 03:38:07.538497-04:00: STK,,,002335,CNH 2500 20.0281831
+2021-04-04 03:38:07.538497-04:00: STK,,,002475,CNH 1000 35.2720226
+2021-04-04 03:38:07.539496-04:00: STK,,,1024,HKD -100 310.382253
+2021-04-04 03:38:07.540495-04:00: OPT,,,1024,HKD,20210429,    270.00,P,500,KST APR21 270 P -1 3579.0
+2021-04-04 03:38:07.540495-04:00: STK,,,1066,HKD 4000 13.90679775
+2021-04-04 03:38:07.541495-04:00: STK,,,1209,HKD 800 30.5289695
+2021-04-04 03:38:07.541495-04:00: STK,,,1299,HKD 400 93.63320575
+2021-04-04 03:38:07.542494-04:00: STK,,,1302,HKD 10000 3.29200295
+2021-04-04 03:38:07.543494-04:00: STK,,,151,HKD -10000 5.8187371
+2021-04-04 03:38:07.543494-04:00: STK,,,1801,HKD 500 51.116075
+2021-04-04 03:38:07.544493-04:00: STK,,,1810,HKD 1800 25.49906965
+2021-04-04 03:38:07.544493-04:00: OPT,,,1810,HKD,20210429,     30.00,C,1000,MIU APR21 30 C -2 620.0
+2021-04-04 03:38:07.545492-04:00: OPT,,,1810,HKD,20210429,     32.00,C,1000,MIU APR21 32 C -2 760.0
+2021-04-04 03:38:07.545492-04:00: STK,,,2013,HKD 2000 24.2849861
+2021-04-04 03:38:07.546492-04:00: STK,,,2158,HKD 600 58.287096
+2021-04-04 03:38:07.547492-04:00: STK,,,2160,HKD 2000 20.16754965
+2021-04-04 03:38:07.547492-04:00: STK,,,2319,HKD 1000 36.6881128
+2021-04-04 03:38:07.548491-04:00: OPT,,,2319,HKD,20210429,     55.00,C,1000,MEN APR21 55 C -1 499.0
+2021-04-04 03:38:07.549491-04:00: STK,,,241,HKD 2000 25.9499643
+2021-04-04 03:38:07.549491-04:00: OPT,,,241,HKD,20210528,     28.00,C,2000,ALH MAY21 28 C -2 1248.0
+2021-04-04 03:38:07.550490-04:00: STK,,,2500,HKD 500 83.0116594
+2021-04-04 03:38:07.551489-04:00: STK,,,322,HKD 4000 13.9268153
+2021-04-04 03:38:07.552489-04:00: STK,,,6186,HKD -10000 21.3887689
+2021-04-04 03:38:07.552489-04:00: STK,,,700,HKD 200 728.8930175
+2021-04-04 03:38:07.553489-04:00: STK,,,8083,HKD 16000 3.47057735
+2021-04-04 03:38:07.554488-04:00: STK,,,883,HKD 6000 7.65902175
+2021-04-04 03:38:07.554488-04:00: STK,,,941,HKD 500 42.432641
+2021-04-04 03:38:07.555488-04:00: STK,,,9633,HKD -1600 43.7782341
+2021-04-04 03:38:07.556487-04:00: STK,,,AC,EUR 150 26.02300535
+2021-04-04 03:38:07.556487-04:00: STK,,,ADBE,USD 13 461.7732154
+2021-04-04 03:38:07.557487-04:00: STK,,,ARKG,USD 45 100.75410665
+2021-04-04 03:38:07.557487-04:00: OPT,,,ARKG,USD,20210416,    105.00,C,100,ARKG  210416C00105000 -1 139.7611
+2021-04-04 03:38:07.558486-04:00: STK,,,ARKK,USD -60 129.24341335
+2021-04-04 03:38:07.559485-04:00: STK,,,BIDU,USD 25 190.874212
+2021-04-04 03:38:07.559485-04:00: OPT,,,BIDU,USD,20210416,    250.00,C,100,BIDU  210416C00250000 -1 289.2078
+2021-04-04 03:38:07.560484-04:00: STK,,,BTWN,USD 300 14.038738
+2021-04-04 03:38:07.561484-04:00: STK,,,DIS,USD 30 117.4993
+2021-04-04 03:38:07.561484-04:00: STK,,,DKNG,USD 80 49.18510375
+2021-04-04 03:38:07.562483-04:00: OPT,,,DKNG,USD,20210416,     75.00,C,100,DKNG  210416C00075000 -2 123.56145
+2021-04-04 03:38:07.563482-04:00: STK,,,DQ,USD 35 80.95455145
+2021-04-04 03:38:07.563482-04:00: STK,,,EDU,USD -350 13.42068145
+2021-04-04 03:38:07.564483-04:00: STK,,,FUTU,USD -50 103.26515
+2021-04-04 03:38:07.565481-04:00: STK,,,GDS,USD 60 100.41828665
+2021-04-04 03:38:07.566481-04:00: STK,,,GOOGL,USD 5 1177.63326
+2021-04-04 03:38:07.567480-04:00: FUT,,,HHI.HK,HKD,20210429 -1 543080.0
+2021-04-04 03:38:07.568480-04:00: STK,,,LI,USD -200 26.4170435
+2021-04-04 03:38:07.568480-04:00: STK,,,MSFT,USD 40 164.31815
+2021-04-04 03:38:07.569479-04:00: OPT,,,NIO,USD,20210416,     30.00,P,100,NIO   210416P00030000 -15 103.5619
+2021-04-04 03:38:07.570480-04:00: STK,,,PLTR,USD 100 24.983703
+2021-04-04 03:38:07.571479-04:00: OPT,,,PLTR,USD,20210416,     20.00,P,100,PLTR  210416P00020000 -3 35.01673335
+2021-04-04 03:38:07.571479-04:00: OPT,,,PLTR,USD,20210416,     35.00,C,100,PLTR  210416C00035000 -5 65.27274
+2021-04-04 03:38:07.572477-04:00: STK,,,PYPL,USD 20 156.815615
+2021-04-04 03:38:07.573479-04:00: OPT,,,QQQ,USD,20210416,    312.00,P,100,QQQ   210416P00312000 1 577.0838
+2021-04-04 03:38:07.574478-04:00: OPT,,,QQQ,USD,20210521,    308.00,P,100,QQQ   210521P00308000 1 985.7138
+2021-04-04 03:38:07.575478-04:00: OPT,,,QQQ,USD,20210521,    315.00,P,100,QQQ   210521P00315000 1 1117.0838
+2021-04-04 03:38:07.576477-04:00: STK,,,QS,USD 30 39.5991
+2021-04-04 03:38:07.577475-04:00: STK,,,RLX,USD 250 18.0175664
+2021-04-04 03:38:07.577475-04:00: OPT,,,RLX,USD,20210416,     25.00,C,100,RLX   210416C00025000 -3 129.27133335
+2021-04-04 03:38:07.578474-04:00: STK,,,SE,USD 25 213.738776
+2021-04-04 03:38:07.579474-04:00: OPT,,,SE,USD,20210416,    290.00,C,100,SE    210416C00290000 -1 259.2085
+2021-04-04 03:38:07.579474-04:00: STK,,,TDOC,USD 30 200.85883335
+2021-04-04 03:38:07.580474-04:00: OPT,,,TDOC,USD,20210416,    270.00,C,100,TDOC  210416C00270000 -1 118.9115
+2021-04-04 03:38:07.581473-04:00: STK,,,TME,USD 300 19.83111965
+2021-04-04 03:38:07.582472-04:00: OPT,,,TME,USD,20210416,     15.00,P,100,TME   210416P00015000 -1 43.3332
+2021-04-04 03:38:07.583472-04:00: OPT,,,TME,USD,20210416,     25.00,C,100,TME   210416C00025000 -4 75.682525
+2021-04-04 03:38:07.584471-04:00: STK,,,TSLA,USD 6 631.50708335
+2021-04-04 03:38:07.585472-04:00: STK,,,U,USD 60 112.31148835
+2021-04-04 03:38:07.586471-04:00: OPT,,,U,USD,20210416,    140.00,C,100,U     210416C00140000 -1 98.912
+2021-04-04 03:38:07.586471-04:00: CASH,,,USD,HKD -23859 7.752701
+2021-04-04 03:38:07.587470-04:00: STK,,,WYNN,USD -55 133.1736309
+2021-04-04 03:38:07.588469-04:00: STK,,,XM,USD 150 41.982312
+2021-04-04 03:38:07.588469-04:00: OPT,,,XM,USD,20210416,     50.00,C,100,XM    210416C00050000 -1 119.7615
+2021-04-04 03:38:07.589468-04:00: ##    Order Status U8139800   ##
+2021-04-04 03:38:07.590468-04:00: {ibpyOrderId=ib4 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:38:07.591467-04:00: {ibpyOrderId=ib5 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,GOOGL,USD}}
+2021-04-04 03:38:07.592466-04:00: {permId=ib0 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=4000 tif=DAY orderRef=} contract={STK,,SEHK,1066,HKD}}
+2021-04-04 03:38:07.592466-04:00: ##    END    ##
+2021-04-04 03:38:07.593465-04:00: ####    Initialize trader COMPLETED    ####
+2021-04-04 03:38:07.805344-04:00: broker_client_factory.CallBacks:errorId=6 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:38:08.346123-04:00: broker_client_factory.CallBacks:errorId=8 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:38:09.383537-04:00: broker_client_factory.CallBacks:errorId=10 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:38:10.427021-04:00: broker_client_factory.CallBacks:errorId=12 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:38:11.470250-04:00: broker_client_factory.CallBacks:errorId=14 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:38:12.511072-04:00: broker_client_factory.CallBacks:errorId=16 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:38:13.043456-04:00: broker_client_factory.CallBacks:errorId=18 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:38:14.081235-04:00: broker_client_factory.CallBacks:errorId=20 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:38:15.123407-04:00: broker_client_factory.CallBacks:errorId=22 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:38:16.181062-04:00: broker_client_factory.CallBacks:errorId=24 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:38:17.217848-04:00: broker_client_factory.CallBacks:errorId=26 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:38:18.265460-04:00: broker_client_factory.CallBacks:errorId=28 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:38:19.309377-04:00: broker_client_factory.CallBacks:errorId=30 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:38:20.364896-04:00: broker_client_factory.CallBacks:errorId=32 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:38:21.405586-04:00: broker_client_factory.CallBacks:errorId=34 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:38:22.444398-04:00: broker_client_factory.CallBacks:errorId=36 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:39:13.644066-04:00: Try brokerClient IB port=7496
+2021-04-04 03:39:13.693039-04:00: port=7496 is correct and set port to userConfig.brokerClientConfig.IB_CLIENT
+2021-04-04 03:39:13.694039-04:00: Connected to IB is successful using port=7496
+2021-04-04 03:39:13.699036-04:00: IBridgePy version 15.1.7
+2021-04-04 03:39:13.700035-04:00: fileName = C:\Users\Evian Zhou\Documents\Python\Hedger\IB_Trading_Bot.py
+2021-04-04 03:39:13.723020-04:00: ####    Starting to initialize trader    ####
+2021-04-04 03:39:13.724020-04:00: ##    ACCOUNT Balance  U8139800  ##
+2021-04-04 03:39:13.725020-04:00: CASH=1424596.39
+2021-04-04 03:39:13.725020-04:00: portfolio_value=2561404.0
+2021-04-04 03:39:13.726019-04:00: positions_value=2416183.01
+2021-04-04 03:39:13.726019-04:00: ##    POSITIONS U8139800   ##
+2021-04-04 03:39:13.727019-04:00: Symbol Amount Cost_basis
+2021-04-04 03:39:13.728018-04:00: STK,,,002230,CNH 1000 37.1837582
+2021-04-04 03:39:13.728018-04:00: STK,,,002335,CNH 2500 20.0281831
+2021-04-04 03:39:13.729017-04:00: STK,,,002475,CNH 1000 35.2720226
+2021-04-04 03:39:13.729017-04:00: STK,,,1024,HKD -100 310.382253
+2021-04-04 03:39:13.730017-04:00: OPT,,,1024,HKD,20210429,    270.00,P,500,KST APR21 270 P -1 3579.0
+2021-04-04 03:39:13.730017-04:00: STK,,,1066,HKD 4000 13.90679775
+2021-04-04 03:39:13.731016-04:00: STK,,,1209,HKD 800 30.5289695
+2021-04-04 03:39:13.731016-04:00: STK,,,1299,HKD 400 93.63320575
+2021-04-04 03:39:13.732015-04:00: STK,,,1302,HKD 10000 3.29200295
+2021-04-04 03:39:13.733014-04:00: STK,,,151,HKD -10000 5.8187371
+2021-04-04 03:39:13.733014-04:00: STK,,,1801,HKD 500 51.116075
+2021-04-04 03:39:13.734015-04:00: STK,,,1810,HKD 1800 25.49906965
+2021-04-04 03:39:13.734015-04:00: OPT,,,1810,HKD,20210429,     30.00,C,1000,MIU APR21 30 C -2 620.0
+2021-04-04 03:39:13.735014-04:00: OPT,,,1810,HKD,20210429,     32.00,C,1000,MIU APR21 32 C -2 760.0
+2021-04-04 03:39:13.735014-04:00: STK,,,2013,HKD 2000 24.2849861
+2021-04-04 03:39:13.736014-04:00: STK,,,2158,HKD 600 58.287096
+2021-04-04 03:39:13.736014-04:00: STK,,,2160,HKD 2000 20.16754965
+2021-04-04 03:39:13.737013-04:00: STK,,,2319,HKD 1000 36.6881128
+2021-04-04 03:39:13.737013-04:00: OPT,,,2319,HKD,20210429,     55.00,C,1000,MEN APR21 55 C -1 499.0
+2021-04-04 03:39:13.738012-04:00: STK,,,241,HKD 2000 25.9499643
+2021-04-04 03:39:13.739011-04:00: OPT,,,241,HKD,20210528,     28.00,C,2000,ALH MAY21 28 C -2 1248.0
+2021-04-04 03:39:13.739011-04:00: STK,,,2500,HKD 500 83.0116594
+2021-04-04 03:39:13.740011-04:00: STK,,,322,HKD 4000 13.9268153
+2021-04-04 03:39:13.740011-04:00: STK,,,6186,HKD -10000 21.3887689
+2021-04-04 03:39:13.741010-04:00: STK,,,700,HKD 200 728.8930175
+2021-04-04 03:39:13.741010-04:00: STK,,,8083,HKD 16000 3.47057735
+2021-04-04 03:39:13.742010-04:00: STK,,,883,HKD 6000 7.65902175
+2021-04-04 03:39:13.742010-04:00: STK,,,941,HKD 500 42.432641
+2021-04-04 03:39:13.743009-04:00: STK,,,9633,HKD -1600 43.7782341
+2021-04-04 03:39:13.743009-04:00: STK,,,AC,EUR 150 26.02300535
+2021-04-04 03:39:13.744009-04:00: STK,,,ADBE,USD 13 461.7732154
+2021-04-04 03:39:13.745008-04:00: STK,,,ARKG,USD 45 100.75410665
+2021-04-04 03:39:13.745008-04:00: OPT,,,ARKG,USD,20210416,    105.00,C,100,ARKG  210416C00105000 -1 139.7611
+2021-04-04 03:39:13.746007-04:00: STK,,,ARKK,USD -60 129.24341335
+2021-04-04 03:39:13.746007-04:00: STK,,,BIDU,USD 25 190.874212
+2021-04-04 03:39:13.747006-04:00: OPT,,,BIDU,USD,20210416,    250.00,C,100,BIDU  210416C00250000 -1 289.2078
+2021-04-04 03:39:13.747006-04:00: STK,,,BTWN,USD 300 14.038738
+2021-04-04 03:39:13.748006-04:00: STK,,,DIS,USD 30 117.4993
+2021-04-04 03:39:13.749006-04:00: STK,,,DKNG,USD 80 49.18510375
+2021-04-04 03:39:13.749006-04:00: OPT,,,DKNG,USD,20210416,     75.00,C,100,DKNG  210416C00075000 -2 123.56145
+2021-04-04 03:39:13.750005-04:00: STK,,,DQ,USD 35 80.95455145
+2021-04-04 03:39:13.751005-04:00: STK,,,EDU,USD -350 13.42068145
+2021-04-04 03:39:13.751005-04:00: STK,,,FUTU,USD -50 103.26515
+2021-04-04 03:39:13.752004-04:00: STK,,,GDS,USD 60 100.41828665
+2021-04-04 03:39:13.752004-04:00: STK,,,GOOGL,USD 5 1177.63326
+2021-04-04 03:39:13.753004-04:00: FUT,,,HHI.HK,HKD,20210429 -1 543080.0
+2021-04-04 03:39:13.753004-04:00: STK,,,LI,USD -200 26.4170435
+2021-04-04 03:39:13.754003-04:00: STK,,,MSFT,USD 40 164.31815
+2021-04-04 03:39:13.755003-04:00: OPT,,,NIO,USD,20210416,     30.00,P,100,NIO   210416P00030000 -15 103.5619
+2021-04-04 03:39:13.755003-04:00: STK,,,PLTR,USD 100 24.983703
+2021-04-04 03:39:13.756002-04:00: OPT,,,PLTR,USD,20210416,     20.00,P,100,PLTR  210416P00020000 -3 35.01673335
+2021-04-04 03:39:13.756002-04:00: OPT,,,PLTR,USD,20210416,     35.00,C,100,PLTR  210416C00035000 -5 65.27274
+2021-04-04 03:39:13.757001-04:00: STK,,,PYPL,USD 20 156.815615
+2021-04-04 03:39:13.758001-04:00: OPT,,,QQQ,USD,20210416,    312.00,P,100,QQQ   210416P00312000 1 577.0838
+2021-04-04 03:39:13.758001-04:00: OPT,,,QQQ,USD,20210521,    308.00,P,100,QQQ   210521P00308000 1 985.7138
+2021-04-04 03:39:13.759000-04:00: OPT,,,QQQ,USD,20210521,    315.00,P,100,QQQ   210521P00315000 1 1117.0838
+2021-04-04 03:39:13.759000-04:00: STK,,,QS,USD 30 39.5991
+2021-04-04 03:39:13.759000-04:00: STK,,,RLX,USD 250 18.0175664
+2021-04-04 03:39:13.759999-04:00: OPT,,,RLX,USD,20210416,     25.00,C,100,RLX   210416C00025000 -3 129.27133335
+2021-04-04 03:39:13.760998-04:00: STK,,,SE,USD 25 213.738776
+2021-04-04 03:39:13.760998-04:00: OPT,,,SE,USD,20210416,    290.00,C,100,SE    210416C00290000 -1 259.2085
+2021-04-04 03:39:13.761999-04:00: STK,,,TDOC,USD 30 200.85883335
+2021-04-04 03:39:13.761999-04:00: OPT,,,TDOC,USD,20210416,    270.00,C,100,TDOC  210416C00270000 -1 118.9115
+2021-04-04 03:39:13.762998-04:00: STK,,,TME,USD 300 19.83111965
+2021-04-04 03:39:13.763997-04:00: OPT,,,TME,USD,20210416,     15.00,P,100,TME   210416P00015000 -1 43.3332
+2021-04-04 03:39:13.763997-04:00: OPT,,,TME,USD,20210416,     25.00,C,100,TME   210416C00025000 -4 75.682525
+2021-04-04 03:39:13.764997-04:00: STK,,,TSLA,USD 6 631.50708335
+2021-04-04 03:39:13.765997-04:00: STK,,,U,USD 60 112.31148835
+2021-04-04 03:39:13.765997-04:00: OPT,,,U,USD,20210416,    140.00,C,100,U     210416C00140000 -1 98.912
+2021-04-04 03:39:13.766996-04:00: CASH,,,USD,HKD -23859 7.752701
+2021-04-04 03:39:13.767995-04:00: STK,,,WYNN,USD -55 133.1736309
+2021-04-04 03:39:13.768994-04:00: STK,,,XM,USD 150 41.982312
+2021-04-04 03:39:13.768994-04:00: OPT,,,XM,USD,20210416,     50.00,C,100,XM    210416C00050000 -1 119.7615
+2021-04-04 03:39:13.769994-04:00: ##    Order Status U8139800   ##
+2021-04-04 03:39:13.770993-04:00: {ibpyOrderId=ib8 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:39:13.771993-04:00: {ibpyOrderId=ib6 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:39:13.771993-04:00: {ibpyOrderId=ib5 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,GOOGL,USD}}
+2021-04-04 03:39:13.772992-04:00: {ibpyOrderId=ib28 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:39:13.773992-04:00: {ibpyOrderId=ib26 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:39:13.773992-04:00: {ibpyOrderId=ib32 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:39:13.774991-04:00: {ibpyOrderId=ib30 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:39:13.775991-04:00: {ibpyOrderId=ib36 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:39:13.776990-04:00: {ibpyOrderId=ib4 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:39:13.777989-04:00: {ibpyOrderId=ib34 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:39:13.778990-04:00: {ibpyOrderId=ib12 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:39:13.779988-04:00: {ibpyOrderId=ib10 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:39:13.780987-04:00: {ibpyOrderId=ib16 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:39:13.781987-04:00: {ibpyOrderId=ib14 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:39:13.781987-04:00: {ibpyOrderId=ib20 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:39:13.782986-04:00: {ibpyOrderId=ib18 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:39:13.783986-04:00: {ibpyOrderId=ib24 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:39:13.784986-04:00: {ibpyOrderId=ib22 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:39:13.784986-04:00: {permId=ib0 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=4000 tif=DAY orderRef=} contract={STK,,SEHK,1066,HKD}}
+2021-04-04 03:39:13.785985-04:00: ##    END    ##
+2021-04-04 03:39:13.785985-04:00: ####    Initialize trader COMPLETED    ####
+2021-04-04 03:39:13.813969-04:00: broker_client_factory.CallBacks:errorId=41 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:39:14.350202-04:00: broker_client_factory.CallBacks:errorId=43 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:39:15.391683-04:00: broker_client_factory.CallBacks:errorId=45 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:39:16.429444-04:00: broker_client_factory.CallBacks:errorId=47 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:39:17.462409-04:00: broker_client_factory.CallBacks:errorId=49 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:39:18.505474-04:00: broker_client_factory.CallBacks:errorId=51 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:39:19.044414-04:00: broker_client_factory.CallBacks:errorId=53 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:39:20.090092-04:00: broker_client_factory.CallBacks:errorId=55 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:39:21.129411-04:00: broker_client_factory.CallBacks:errorId=57 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:39:22.175267-04:00: broker_client_factory.CallBacks:errorId=59 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:39:23.217434-04:00: broker_client_factory.CallBacks:errorId=61 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:39:24.262866-04:00: broker_client_factory.CallBacks:errorId=63 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:39:25.301851-04:00: broker_client_factory.CallBacks:errorId=65 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:39:26.343471-04:00: broker_client_factory.CallBacks:errorId=67 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:39:27.387986-04:00: broker_client_factory.CallBacks:errorId=69 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:39:28.436241-04:00: broker_client_factory.CallBacks:errorId=71 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:39:29.486757-04:00: broker_client_factory.CallBacks:errorId=73 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:39:30.533786-04:00: broker_client_factory.CallBacks:errorId=75 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:39:31.067305-04:00: broker_client_factory.CallBacks:errorId=77 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:39:32.104865-04:00: broker_client_factory.CallBacks:errorId=79 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:39:33.140955-04:00: broker_client_factory.CallBacks:errorId=81 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:39:34.180885-04:00: broker_client_factory.CallBacks:errorId=83 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:39:35.222676-04:00: broker_client_factory.CallBacks:errorId=85 errorCode=399 errorMessage=Order Message:
+BUY 1 MSFT NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:40:28.175714-04:00: Try brokerClient IB port=7496
+2021-04-04 03:40:28.197681-04:00: port=7496 is correct and set port to userConfig.brokerClientConfig.IB_CLIENT
+2021-04-04 03:40:28.204677-04:00: Connected to IB is successful using port=7496
+2021-04-04 03:40:28.212672-04:00: IBridgePy version 15.1.7
+2021-04-04 03:40:28.213671-04:00: fileName = C:\Users\Evian Zhou\Documents\Python\Hedger\IB_Trading_Bot.py
+2021-04-04 03:40:28.238657-04:00: ####    Starting to initialize trader    ####
+2021-04-04 03:40:28.239657-04:00: ##    ACCOUNT Balance  U8139800  ##
+2021-04-04 03:40:28.239657-04:00: CASH=1424596.39
+2021-04-04 03:40:28.240656-04:00: portfolio_value=2561404.0
+2021-04-04 03:40:28.240656-04:00: positions_value=2416183.01
+2021-04-04 03:40:28.241656-04:00: ##    POSITIONS U8139800   ##
+2021-04-04 03:40:28.242655-04:00: Symbol Amount Cost_basis
+2021-04-04 03:40:28.242655-04:00: STK,,,002230,CNH 1000 37.1837582
+2021-04-04 03:40:28.243654-04:00: STK,,,002335,CNH 2500 20.0281831
+2021-04-04 03:40:28.244654-04:00: STK,,,002475,CNH 1000 35.2720226
+2021-04-04 03:40:28.244654-04:00: STK,,,1024,HKD -100 310.382253
+2021-04-04 03:40:28.244654-04:00: OPT,,,1024,HKD,20210429,    270.00,P,500,KST APR21 270 P -1 3579.0
+2021-04-04 03:40:28.245653-04:00: STK,,,1066,HKD 4000 13.90679775
+2021-04-04 03:40:28.245653-04:00: STK,,,1209,HKD 800 30.5289695
+2021-04-04 03:40:28.246651-04:00: STK,,,1299,HKD 400 93.63320575
+2021-04-04 03:40:28.246651-04:00: STK,,,1302,HKD 10000 3.29200295
+2021-04-04 03:40:28.247652-04:00: STK,,,151,HKD -10000 5.8187371
+2021-04-04 03:40:28.248652-04:00: STK,,,1801,HKD 500 51.116075
+2021-04-04 03:40:28.248652-04:00: STK,,,1810,HKD 1800 25.49906965
+2021-04-04 03:40:28.249650-04:00: OPT,,,1810,HKD,20210429,     30.00,C,1000,MIU APR21 30 C -2 620.0
+2021-04-04 03:40:28.249650-04:00: OPT,,,1810,HKD,20210429,     32.00,C,1000,MIU APR21 32 C -2 760.0
+2021-04-04 03:40:28.250650-04:00: STK,,,2013,HKD 2000 24.2849861
+2021-04-04 03:40:28.251649-04:00: STK,,,2158,HKD 600 58.287096
+2021-04-04 03:40:28.251649-04:00: STK,,,2160,HKD 2000 20.16754965
+2021-04-04 03:40:28.252650-04:00: STK,,,2319,HKD 1000 36.6881128
+2021-04-04 03:40:28.252650-04:00: OPT,,,2319,HKD,20210429,     55.00,C,1000,MEN APR21 55 C -1 499.0
+2021-04-04 03:40:28.253647-04:00: STK,,,241,HKD 2000 25.9499643
+2021-04-04 03:40:28.253647-04:00: OPT,,,241,HKD,20210528,     28.00,C,2000,ALH MAY21 28 C -2 1248.0
+2021-04-04 03:40:28.254647-04:00: STK,,,2500,HKD 500 83.0116594
+2021-04-04 03:40:28.254647-04:00: STK,,,322,HKD 4000 13.9268153
+2021-04-04 03:40:28.255646-04:00: STK,,,6186,HKD -10000 21.3887689
+2021-04-04 03:40:28.256647-04:00: STK,,,700,HKD 200 728.8930175
+2021-04-04 03:40:28.256647-04:00: STK,,,8083,HKD 16000 3.47057735
+2021-04-04 03:40:28.257647-04:00: STK,,,883,HKD 6000 7.65902175
+2021-04-04 03:40:28.257647-04:00: STK,,,941,HKD 500 42.432641
+2021-04-04 03:40:28.258646-04:00: STK,,,9633,HKD -1600 43.7782341
+2021-04-04 03:40:28.259646-04:00: STK,,,AC,EUR 150 26.02300535
+2021-04-04 03:40:28.259646-04:00: STK,,,ADBE,USD 13 461.7732154
+2021-04-04 03:40:28.260645-04:00: STK,,,ARKG,USD 45 100.75410665
+2021-04-04 03:40:28.260645-04:00: OPT,,,ARKG,USD,20210416,    105.00,C,100,ARKG  210416C00105000 -1 139.7611
+2021-04-04 03:40:28.261645-04:00: STK,,,ARKK,USD -60 129.24341335
+2021-04-04 03:40:28.261645-04:00: STK,,,BIDU,USD 25 190.874212
+2021-04-04 03:40:28.262643-04:00: OPT,,,BIDU,USD,20210416,    250.00,C,100,BIDU  210416C00250000 -1 289.2078
+2021-04-04 03:40:28.262643-04:00: STK,,,BTWN,USD 300 14.038738
+2021-04-04 03:40:28.263643-04:00: STK,,,DIS,USD 30 117.4993
+2021-04-04 03:40:28.263643-04:00: STK,,,DKNG,USD 80 49.18510375
+2021-04-04 03:40:28.264642-04:00: OPT,,,DKNG,USD,20210416,     75.00,C,100,DKNG  210416C00075000 -2 123.56145
+2021-04-04 03:40:28.265641-04:00: STK,,,DQ,USD 35 80.95455145
+2021-04-04 03:40:28.265641-04:00: STK,,,EDU,USD -350 13.42068145
+2021-04-04 03:40:28.266640-04:00: STK,,,FUTU,USD -50 103.26515
+2021-04-04 03:40:28.267641-04:00: STK,,,GDS,USD 60 100.41828665
+2021-04-04 03:40:28.267641-04:00: STK,,,GOOGL,USD 5 1177.63326
+2021-04-04 03:40:28.268639-04:00: FUT,,,HHI.HK,HKD,20210429 -1 543080.0
+2021-04-04 03:40:28.268639-04:00: STK,,,LI,USD -200 26.4170435
+2021-04-04 03:40:28.269640-04:00: STK,,,MSFT,USD 40 164.31815
+2021-04-04 03:40:28.270639-04:00: OPT,,,NIO,USD,20210416,     30.00,P,100,NIO   210416P00030000 -15 103.5619
+2021-04-04 03:40:28.270639-04:00: STK,,,PLTR,USD 100 24.983703
+2021-04-04 03:40:28.271638-04:00: OPT,,,PLTR,USD,20210416,     20.00,P,100,PLTR  210416P00020000 -3 35.01673335
+2021-04-04 03:40:28.271638-04:00: OPT,,,PLTR,USD,20210416,     35.00,C,100,PLTR  210416C00035000 -5 65.27274
+2021-04-04 03:40:28.272638-04:00: STK,,,PYPL,USD 20 156.815615
+2021-04-04 03:40:28.272638-04:00: OPT,,,QQQ,USD,20210416,    312.00,P,100,QQQ   210416P00312000 1 577.0838
+2021-04-04 03:40:28.273637-04:00: OPT,,,QQQ,USD,20210521,    308.00,P,100,QQQ   210521P00308000 1 985.7138
+2021-04-04 03:40:28.273637-04:00: OPT,,,QQQ,USD,20210521,    315.00,P,100,QQQ   210521P00315000 1 1117.0838
+2021-04-04 03:40:28.274637-04:00: STK,,,QS,USD 30 39.5991
+2021-04-04 03:40:28.274637-04:00: STK,,,RLX,USD 250 18.0175664
+2021-04-04 03:40:28.275636-04:00: OPT,,,RLX,USD,20210416,     25.00,C,100,RLX   210416C00025000 -3 129.27133335
+2021-04-04 03:40:28.275636-04:00: STK,,,SE,USD 25 213.738776
+2021-04-04 03:40:28.276636-04:00: OPT,,,SE,USD,20210416,    290.00,C,100,SE    210416C00290000 -1 259.2085
+2021-04-04 03:40:28.276636-04:00: STK,,,TDOC,USD 30 200.85883335
+2021-04-04 03:40:28.277634-04:00: OPT,,,TDOC,USD,20210416,    270.00,C,100,TDOC  210416C00270000 -1 118.9115
+2021-04-04 03:40:28.277634-04:00: STK,,,TME,USD 300 19.83111965
+2021-04-04 03:40:28.278632-04:00: OPT,,,TME,USD,20210416,     15.00,P,100,TME   210416P00015000 -1 43.3332
+2021-04-04 03:40:28.278632-04:00: OPT,,,TME,USD,20210416,     25.00,C,100,TME   210416C00025000 -4 75.682525
+2021-04-04 03:40:28.279632-04:00: STK,,,TSLA,USD 6 631.50708335
+2021-04-04 03:40:28.280633-04:00: STK,,,U,USD 60 112.31148835
+2021-04-04 03:40:28.280633-04:00: OPT,,,U,USD,20210416,    140.00,C,100,U     210416C00140000 -1 98.912
+2021-04-04 03:40:28.281633-04:00: CASH,,,USD,HKD -23859 7.752701
+2021-04-04 03:40:28.281633-04:00: STK,,,WYNN,USD -55 133.1736309
+2021-04-04 03:40:28.282632-04:00: STK,,,XM,USD 150 41.982312
+2021-04-04 03:40:28.282632-04:00: OPT,,,XM,USD,20210416,     50.00,C,100,XM    210416C00050000 -1 119.7615
+2021-04-04 03:40:28.283631-04:00: ##    Order Status U8139800   ##
+2021-04-04 03:40:28.283631-04:00: {ibpyOrderId=ib61 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.284631-04:00: {ibpyOrderId=ib59 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.285629-04:00: {ibpyOrderId=ib65 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.286630-04:00: {ibpyOrderId=ib63 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.286630-04:00: {ibpyOrderId=ib69 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.287628-04:00: {ibpyOrderId=ib67 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.288629-04:00: {ibpyOrderId=ib73 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.289626-04:00: {ibpyOrderId=ib71 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.289626-04:00: {ibpyOrderId=ib45 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.290626-04:00: {ibpyOrderId=ib43 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.290626-04:00: {ibpyOrderId=ib49 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.291627-04:00: {ibpyOrderId=ib47 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.292626-04:00: {ibpyOrderId=ib5 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,GOOGL,USD}}
+2021-04-04 03:40:28.293625-04:00: {ibpyOrderId=ib53 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.293625-04:00: {ibpyOrderId=ib51 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.294624-04:00: {ibpyOrderId=ib57 status=PreSubmitted order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.295624-04:00: {ibpyOrderId=ib55 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.296624-04:00: {ibpyOrderId=ib28 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.296624-04:00: {ibpyOrderId=ib26 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.297623-04:00: {ibpyOrderId=ib32 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.298622-04:00: {ibpyOrderId=ib30 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.299621-04:00: {ibpyOrderId=ib36 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.299621-04:00: {ibpyOrderId=ib34 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.300626-04:00: {ibpyOrderId=ib41 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.300626-04:00: {ibpyOrderId=ib12 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.301621-04:00: {ibpyOrderId=ib10 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.302621-04:00: {ibpyOrderId=ib16 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.302621-04:00: {ibpyOrderId=ib14 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.303620-04:00: {ibpyOrderId=ib20 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.304619-04:00: {ibpyOrderId=ib18 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.304619-04:00: {ibpyOrderId=ib24 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.305619-04:00: {ibpyOrderId=ib22 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.306618-04:00: {ibpyOrderId=ib8 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.307617-04:00: {ibpyOrderId=ib6 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.307617-04:00: {ibpyOrderId=ib4 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.308617-04:00: {ibpyOrderId=ib77 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.309616-04:00: {ibpyOrderId=ib75 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.309616-04:00: {ibpyOrderId=ib79 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:40:28.310616-04:00: {permId=ib0 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=4000 tif=DAY orderRef=} contract={STK,,SEHK,1066,HKD}}
+2021-04-04 03:40:28.311615-04:00: ##    END    ##
+2021-04-04 03:40:28.311615-04:00: ####    Initialize trader COMPLETED    ####
+2021-04-04 03:40:28.339597-04:00: broker_client_factory.CallBacks:errorId=90 errorCode=399 errorMessage=Order Message:
+BUY 1 GOOGL NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:40:29.381537-04:00: broker_client_factory.CallBacks:errorId=92 errorCode=399 errorMessage=Order Message:
+BUY 1 GOOGL NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:40:30.423896-04:00: broker_client_factory.CallBacks:errorId=94 errorCode=399 errorMessage=Order Message:
+BUY 1 GOOGL NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:40:31.458437-04:00: broker_client_factory.CallBacks:errorId=96 errorCode=399 errorMessage=Order Message:
+BUY 1 GOOGL NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:40:32.494000-04:00: broker_client_factory.CallBacks:errorId=98 errorCode=399 errorMessage=Order Message:
+BUY 1 GOOGL NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:40:33.532342-04:00: broker_client_factory.CallBacks:errorId=100 errorCode=399 errorMessage=Order Message:
+BUY 1 GOOGL NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:40:34.072063-04:00: broker_client_factory.CallBacks:errorId=102 errorCode=399 errorMessage=Order Message:
+BUY 1 GOOGL NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:40:35.114603-04:00: broker_client_factory.CallBacks:errorId=104 errorCode=399 errorMessage=Order Message:
+BUY 1 GOOGL NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:40:36.157477-04:00: broker_client_factory.CallBacks:errorId=106 errorCode=399 errorMessage=Order Message:
+BUY 1 GOOGL NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:40:37.194587-04:00: broker_client_factory.CallBacks:errorId=108 errorCode=399 errorMessage=Order Message:
+BUY 1 GOOGL NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:40:38.226829-04:00: broker_client_factory.CallBacks:errorId=110 errorCode=399 errorMessage=Order Message:
+BUY 1 GOOGL NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:40:39.263604-04:00: broker_client_factory.CallBacks:errorId=112 errorCode=399 errorMessage=Order Message:
+BUY 1 GOOGL NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:40:40.307527-04:00: broker_client_factory.CallBacks:errorId=114 errorCode=399 errorMessage=Order Message:
+BUY 1 GOOGL NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:40:41.343247-04:00: broker_client_factory.CallBacks:errorId=116 errorCode=399 errorMessage=Order Message:
+BUY 1 GOOGL NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:40:42.386201-04:00: broker_client_factory.CallBacks:errorId=118 errorCode=399 errorMessage=Order Message:
+BUY 1 GOOGL NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:40:43.422986-04:00: broker_client_factory.CallBacks:errorId=120 errorCode=399 errorMessage=Order Message:
+BUY 1 GOOGL NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:40:44.462453-04:00: broker_client_factory.CallBacks:errorId=122 errorCode=399 errorMessage=Order Message:
+BUY 1 GOOGL NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:40:45.501998-04:00: broker_client_factory.CallBacks:errorId=124 errorCode=399 errorMessage=Order Message:
+BUY 1 GOOGL NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:40:46.034951-04:00: broker_client_factory.CallBacks:errorId=126 errorCode=399 errorMessage=Order Message:
+BUY 1 GOOGL NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:40:47.072455-04:00: broker_client_factory.CallBacks:errorId=128 errorCode=399 errorMessage=Order Message:
+BUY 1 GOOGL NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:40:48.120827-04:00: broker_client_factory.CallBacks:errorId=130 errorCode=399 errorMessage=Order Message:
+BUY 1 GOOGL NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:40:49.171787-04:00: broker_client_factory.CallBacks:errorId=132 errorCode=399 errorMessage=Order Message:
+BUY 1 GOOGL NASDAQ.NMS
+Warning: your order will not be placed at the exchange until 2021-04-05 09:30:00 US/Eastern
+2021-04-04 03:41:20.219807-04:00: Try brokerClient IB port=7496
+2021-04-04 03:41:20.240773-04:00: port=7496 is correct and set port to userConfig.brokerClientConfig.IB_CLIENT
+2021-04-04 03:41:20.246769-04:00: Connected to IB is successful using port=7496
+2021-04-04 03:41:20.254791-04:00: IBridgePy version 15.1.7
+2021-04-04 03:41:20.254791-04:00: fileName = C:\Users\Evian Zhou\Documents\Python\Hedger\IB_Trading_Bot.py
+2021-04-04 03:41:20.278752-04:00: ####    Starting to initialize trader    ####
+2021-04-04 03:41:20.278752-04:00: ##    ACCOUNT Balance  U8139800  ##
+2021-04-04 03:41:20.279750-04:00: CASH=1424596.39
+2021-04-04 03:41:20.280750-04:00: portfolio_value=2561404.0
+2021-04-04 03:41:20.280750-04:00: positions_value=2416183.01
+2021-04-04 03:41:20.281750-04:00: ##    POSITIONS U8139800   ##
+2021-04-04 03:41:20.282748-04:00: Symbol Amount Cost_basis
+2021-04-04 03:41:20.282748-04:00: STK,,,002230,CNH 1000 37.1837582
+2021-04-04 03:41:20.283749-04:00: STK,,,002335,CNH 2500 20.0281831
+2021-04-04 03:41:20.283749-04:00: STK,,,002475,CNH 1000 35.2720226
+2021-04-04 03:41:20.284748-04:00: STK,,,1024,HKD -100 310.382253
+2021-04-04 03:41:20.284748-04:00: OPT,,,1024,HKD,20210429,    270.00,P,500,KST APR21 270 P -1 3579.0
+2021-04-04 03:41:20.285747-04:00: STK,,,1066,HKD 4000 13.90679775
+2021-04-04 03:41:20.285747-04:00: STK,,,1209,HKD 800 30.5289695
+2021-04-04 03:41:20.286747-04:00: STK,,,1299,HKD 400 93.63320575
+2021-04-04 03:41:20.286747-04:00: STK,,,1302,HKD 10000 3.29200295
+2021-04-04 03:41:20.287746-04:00: STK,,,151,HKD -10000 5.8187371
+2021-04-04 03:41:20.287746-04:00: STK,,,1801,HKD 500 51.116075
+2021-04-04 03:41:20.288745-04:00: STK,,,1810,HKD 1800 25.49906965
+2021-04-04 03:41:20.288745-04:00: OPT,,,1810,HKD,20210429,     30.00,C,1000,MIU APR21 30 C -2 620.0
+2021-04-04 03:41:20.289757-04:00: OPT,,,1810,HKD,20210429,     32.00,C,1000,MIU APR21 32 C -2 760.0
+2021-04-04 03:41:20.289757-04:00: STK,,,2013,HKD 2000 24.2849861
+2021-04-04 03:41:20.290744-04:00: STK,,,2158,HKD 600 58.287096
+2021-04-04 03:41:20.290744-04:00: STK,,,2160,HKD 2000 20.16754965
+2021-04-04 03:41:20.291744-04:00: STK,,,2319,HKD 1000 36.6881128
+2021-04-04 03:41:20.291744-04:00: OPT,,,2319,HKD,20210429,     55.00,C,1000,MEN APR21 55 C -1 499.0
+2021-04-04 03:41:20.292743-04:00: STK,,,241,HKD 2000 25.9499643
+2021-04-04 03:41:20.293749-04:00: OPT,,,241,HKD,20210528,     28.00,C,2000,ALH MAY21 28 C -2 1248.0
+2021-04-04 03:41:20.293749-04:00: STK,,,2500,HKD 500 83.0116594
+2021-04-04 03:41:20.294742-04:00: STK,,,322,HKD 4000 13.9268153
+2021-04-04 03:41:20.294742-04:00: STK,,,6186,HKD -10000 21.3887689
+2021-04-04 03:41:20.295741-04:00: STK,,,700,HKD 200 728.8930175
+2021-04-04 03:41:20.295741-04:00: STK,,,8083,HKD 16000 3.47057735
+2021-04-04 03:41:20.296741-04:00: STK,,,883,HKD 6000 7.65902175
+2021-04-04 03:41:20.296741-04:00: STK,,,941,HKD 500 42.432641
+2021-04-04 03:41:20.297740-04:00: STK,,,9633,HKD -1600 43.7782341
+2021-04-04 03:41:20.297740-04:00: STK,,,AC,EUR 150 26.02300535
+2021-04-04 03:41:20.298740-04:00: STK,,,ADBE,USD 13 461.7732154
+2021-04-04 03:41:20.298740-04:00: STK,,,ARKG,USD 45 100.75410665
+2021-04-04 03:41:20.299738-04:00: OPT,,,ARKG,USD,20210416,    105.00,C,100,ARKG  210416C00105000 -1 139.7611
+2021-04-04 03:41:20.299738-04:00: STK,,,ARKK,USD -60 129.24341335
+2021-04-04 03:41:20.300738-04:00: STK,,,BIDU,USD 25 190.874212
+2021-04-04 03:41:20.301738-04:00: OPT,,,BIDU,USD,20210416,    250.00,C,100,BIDU  210416C00250000 -1 289.2078
+2021-04-04 03:41:20.301738-04:00: STK,,,BTWN,USD 300 14.038738
+2021-04-04 03:41:20.302738-04:00: STK,,,DIS,USD 30 117.4993
+2021-04-04 03:41:20.302738-04:00: STK,,,DKNG,USD 80 49.18510375
+2021-04-04 03:41:20.303736-04:00: OPT,,,DKNG,USD,20210416,     75.00,C,100,DKNG  210416C00075000 -2 123.56145
+2021-04-04 03:41:20.304736-04:00: STK,,,DQ,USD 35 80.95455145
+2021-04-04 03:41:20.304736-04:00: STK,,,EDU,USD -350 13.42068145
+2021-04-04 03:41:20.305735-04:00: STK,,,FUTU,USD -50 103.26515
+2021-04-04 03:41:20.306735-04:00: STK,,,GDS,USD 60 100.41828665
+2021-04-04 03:41:20.306735-04:00: STK,,,GOOGL,USD 5 1177.63326
+2021-04-04 03:41:20.307735-04:00: FUT,,,HHI.HK,HKD,20210429 -1 543080.0
+2021-04-04 03:41:20.307735-04:00: STK,,,LI,USD -200 26.4170435
+2021-04-04 03:41:20.308734-04:00: STK,,,MSFT,USD 40 164.31815
+2021-04-04 03:41:20.309737-04:00: OPT,,,NIO,USD,20210416,     30.00,P,100,NIO   210416P00030000 -15 103.5619
+2021-04-04 03:41:20.309737-04:00: STK,,,PLTR,USD 100 24.983703
+2021-04-04 03:41:20.310733-04:00: OPT,,,PLTR,USD,20210416,     20.00,P,100,PLTR  210416P00020000 -3 35.01673335
+2021-04-04 03:41:20.310733-04:00: OPT,,,PLTR,USD,20210416,     35.00,C,100,PLTR  210416C00035000 -5 65.27274
+2021-04-04 03:41:20.311733-04:00: STK,,,PYPL,USD 20 156.815615
+2021-04-04 03:41:20.312731-04:00: OPT,,,QQQ,USD,20210416,    312.00,P,100,QQQ   210416P00312000 1 577.0838
+2021-04-04 03:41:20.312731-04:00: OPT,,,QQQ,USD,20210521,    308.00,P,100,QQQ   210521P00308000 1 985.7138
+2021-04-04 03:41:20.313732-04:00: OPT,,,QQQ,USD,20210521,    315.00,P,100,QQQ   210521P00315000 1 1117.0838
+2021-04-04 03:41:20.313732-04:00: STK,,,QS,USD 30 39.5991
+2021-04-04 03:41:20.314730-04:00: STK,,,RLX,USD 250 18.0175664
+2021-04-04 03:41:20.315730-04:00: OPT,,,RLX,USD,20210416,     25.00,C,100,RLX   210416C00025000 -3 129.27133335
+2021-04-04 03:41:20.315730-04:00: STK,,,SE,USD 25 213.738776
+2021-04-04 03:41:20.316730-04:00: OPT,,,SE,USD,20210416,    290.00,C,100,SE    210416C00290000 -1 259.2085
+2021-04-04 03:41:20.316730-04:00: STK,,,TDOC,USD 30 200.85883335
+2021-04-04 03:41:20.317728-04:00: OPT,,,TDOC,USD,20210416,    270.00,C,100,TDOC  210416C00270000 -1 118.9115
+2021-04-04 03:41:20.317728-04:00: STK,,,TME,USD 300 19.83111965
+2021-04-04 03:41:20.318728-04:00: OPT,,,TME,USD,20210416,     15.00,P,100,TME   210416P00015000 -1 43.3332
+2021-04-04 03:41:20.318728-04:00: OPT,,,TME,USD,20210416,     25.00,C,100,TME   210416C00025000 -4 75.682525
+2021-04-04 03:41:20.319727-04:00: STK,,,TSLA,USD 6 631.50708335
+2021-04-04 03:41:20.320727-04:00: STK,,,U,USD 60 112.31148835
+2021-04-04 03:41:20.320727-04:00: OPT,,,U,USD,20210416,    140.00,C,100,U     210416C00140000 -1 98.912
+2021-04-04 03:41:20.321726-04:00: CASH,,,USD,HKD -23859 7.752701
+2021-04-04 03:41:20.321726-04:00: STK,,,WYNN,USD -55 133.1736309
+2021-04-04 03:41:20.322726-04:00: STK,,,XM,USD 150 41.982312
+2021-04-04 03:41:20.322726-04:00: OPT,,,XM,USD,20210416,     50.00,C,100,XM    210416C00050000 -1 119.7615
+2021-04-04 03:41:20.323726-04:00: ##    Order Status U8139800   ##
+2021-04-04 03:41:20.324724-04:00: {ibpyOrderId=ib61 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.325724-04:00: {ibpyOrderId=ib59 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.325724-04:00: {ibpyOrderId=ib65 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.326724-04:00: {ibpyOrderId=ib63 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.327746-04:00: {ibpyOrderId=ib69 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.328722-04:00: {ibpyOrderId=ib67 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.328722-04:00: {ibpyOrderId=ib73 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.329722-04:00: {ibpyOrderId=ib71 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.330721-04:00: {ibpyOrderId=ib45 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.330721-04:00: {ibpyOrderId=ib43 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.331721-04:00: {ibpyOrderId=ib49 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.332719-04:00: {ibpyOrderId=ib47 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.332719-04:00: {ibpyOrderId=ib5 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,GOOGL,USD}}
+2021-04-04 03:41:20.333720-04:00: {ibpyOrderId=ib53 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.334741-04:00: {ibpyOrderId=ib51 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.334741-04:00: {ibpyOrderId=ib57 status=PreSubmitted order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.335719-04:00: {ibpyOrderId=ib55 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.336717-04:00: {ibpyOrderId=ib28 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.336717-04:00: {ibpyOrderId=ib26 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.337718-04:00: {ibpyOrderId=ib32 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.338716-04:00: {ibpyOrderId=ib30 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.338716-04:00: {ibpyOrderId=ib36 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.339716-04:00: {ibpyOrderId=ib34 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.340737-04:00: {ibpyOrderId=ib41 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.341715-04:00: {ibpyOrderId=ib12 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.341715-04:00: {ibpyOrderId=ib10 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.342716-04:00: {ibpyOrderId=ib16 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.343744-04:00: {ibpyOrderId=ib14 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.344713-04:00: {ibpyOrderId=ib20 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.344713-04:00: {ibpyOrderId=ib18 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.345734-04:00: {ibpyOrderId=ib24 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.346712-04:00: {ibpyOrderId=ib22 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.346712-04:00: {ibpyOrderId=ib128 status=PreSubmitted order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,GOOGL,USD}}
+2021-04-04 03:41:20.347735-04:00: {ibpyOrderId=ib126 status=PreSubmitted order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,GOOGL,USD}}
+2021-04-04 03:41:20.348753-04:00: {ibpyOrderId=ib132 status=PreSubmitted order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,GOOGL,USD}}
+2021-04-04 03:41:20.348753-04:00: {ibpyOrderId=ib130 status=PreSubmitted order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,GOOGL,USD}}
+2021-04-04 03:41:20.349710-04:00: {ibpyOrderId=ib112 status=PreSubmitted order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,GOOGL,USD}}
+2021-04-04 03:41:20.350734-04:00: {ibpyOrderId=ib110 status=PreSubmitted order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,GOOGL,USD}}
+2021-04-04 03:41:20.351709-04:00: {ibpyOrderId=ib116 status=PreSubmitted order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,GOOGL,USD}}
+2021-04-04 03:41:20.351709-04:00: {ibpyOrderId=ib114 status=PreSubmitted order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,GOOGL,USD}}
+2021-04-04 03:41:20.352709-04:00: {ibpyOrderId=ib120 status=PreSubmitted order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,GOOGL,USD}}
+2021-04-04 03:41:20.353709-04:00: {ibpyOrderId=ib118 status=PreSubmitted order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,GOOGL,USD}}
+2021-04-04 03:41:20.353709-04:00: {ibpyOrderId=ib124 status=PreSubmitted order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,GOOGL,USD}}
+2021-04-04 03:41:20.354730-04:00: {ibpyOrderId=ib122 status=PreSubmitted order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,GOOGL,USD}}
+2021-04-04 03:41:20.355708-04:00: {ibpyOrderId=ib96 status=PreSubmitted order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,GOOGL,USD}}
+2021-04-04 03:41:20.355708-04:00: {ibpyOrderId=ib94 status=PreSubmitted order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,GOOGL,USD}}
+2021-04-04 03:41:20.356707-04:00: {ibpyOrderId=ib100 status=PreSubmitted order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,GOOGL,USD}}
+2021-04-04 03:41:20.357706-04:00: {ibpyOrderId=ib98 status=PreSubmitted order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,GOOGL,USD}}
+2021-04-04 03:41:20.358705-04:00: {ibpyOrderId=ib104 status=PreSubmitted order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,GOOGL,USD}}
+2021-04-04 03:41:20.358705-04:00: {ibpyOrderId=ib102 status=PreSubmitted order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,GOOGL,USD}}
+2021-04-04 03:41:20.359727-04:00: {ibpyOrderId=ib108 status=PreSubmitted order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,GOOGL,USD}}
+2021-04-04 03:41:20.360736-04:00: {ibpyOrderId=ib106 status=PreSubmitted order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,GOOGL,USD}}
+2021-04-04 03:41:20.361704-04:00: {ibpyOrderId=ib77 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.361704-04:00: {ibpyOrderId=ib75 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.362725-04:00: {ibpyOrderId=ib79 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.363703-04:00: {ibpyOrderId=ib92 status=PreSubmitted order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,GOOGL,USD}}
+2021-04-04 03:41:20.363703-04:00: {ibpyOrderId=ib90 status=PreSubmitted order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,GOOGL,USD}}
+2021-04-04 03:41:20.364725-04:00: {ibpyOrderId=ib8 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.365702-04:00: {ibpyOrderId=ib6 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.365702-04:00: {ibpyOrderId=ib4 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=1 tif=DAY orderRef=} contract={STK,,SMART,MSFT,USD}}
+2021-04-04 03:41:20.366722-04:00: {permId=ib0 status=PendingCancel order={account=U8139800 action=BUY orderType=MKT amount=4000 tif=DAY orderRef=} contract={STK,,SEHK,1066,HKD}}
+2021-04-04 03:41:20.366722-04:00: ##    END    ##
+2021-04-04 03:41:20.367711-04:00: ####    Initialize trader COMPLETED    ####
+2021-04-04 03:41:20.369720-04:00: cancelOrder is sent to IB ibpyOrderId=ib57
+2021-04-04 03:41:50.369965-04:00: broker_client_factory.BrokerClient::request_data: EXIT, the following requestRecord failed
+2021-04-04 03:41:50.370965-04:00: {reqId=137;status=Submitted;reqType=cancelOrder;followUp=True;param={ibpyOrderId:ib57,int_orderId:57,}}

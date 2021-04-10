@@ -357,8 +357,6 @@ def Sceener_RSI(filepath, filename, RSI14_DF):
     if not stock_df.empty:
         RSI14_DF = pd.concat([RSI14_DF, stock_df])
 
-
-
     return RSI14_DF
 
 """
@@ -373,7 +371,7 @@ def main():
     #Download_stock_price(stock_universe_path, stock_hist_data_path)
     #ownload_stock_price(index_universe_path, stock_hist_data_path)
 
-    #Add_indicator_all(end_date)
+    Add_indicator_all(end_date)
    
     #traing_signal_stochastic_oscillator_all(end_date)
     

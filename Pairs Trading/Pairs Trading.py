@@ -30,7 +30,7 @@ import os
 # For solving the combinations and create pairs
 from itertools import combinations
 
-# Ta-lib python library for technical analysis
+# Ta-lib python library for technical analysisblp
 import talib
 from talib import MA_Type
 
@@ -43,13 +43,13 @@ from win32com.client import Dispatch, constants
 start_date = '2015-01-01'
 end_date = datetime.datetime.today().strftime("%Y-%m-%d")
 
-stock_universe_path = r'U:\Python\Pairs Trading\Pairs.csv'
-stock_hist_data_path = r'U:\Python Trading Output\Stock_OHLC' + '\\' + end_date + '\\'
-stock_output_path = r'U:\Python Trading Output\Pairs Trading\Out_put' + '\\' + end_date + '\\'
+stock_universe_path = r'C:\Users\Evian Zhou\Documents\Python\Pairs Trading\Pairs.csv'
+stock_hist_data_path = r'C:\Users\Evian Zhou\Documents\Python Trading Output\Stock_OHLC\\' + '\\' + end_date + '\\'
+stock_output_path = r'C:\Users\Evian Zhou\Documents\Python Trading Output\Pairs Trading\Out_put' + '\\' + end_date + '\\'
 
 # Create folder for Source Data
 try:
-    os.mkdir(stock_hist_data_path)
+        os.mkdir(stock_hist_data_path)
 except OSError:
     print("Creation of the directory %s failed" % stock_hist_data_path)
 else:
@@ -75,7 +75,7 @@ hedge_ratio_rolling_duration = 210
 def listToString(s):      
     # initialize an empty string 
     str1 = ""  
-    
+   
     # traverse in the string   
     for ele in s:  
         str1 += ele   
@@ -176,6 +176,13 @@ def calculate_correlation(Stock_1_file, Stock_2_file, Source_File_Folder):
     pairs.loc[(pairs['Ratio'] < pairs['Lower_band']),  "Break_Lower"] = True
     
     
+    # Ratio RSI and MACD
+    # RSI
+    pairs['Ratio_RSI14'] = talib.RSI(pairs['Ratio'], timeperiod = 14)
+    pairs['Ratio_RSI28'] = talib.RSI(pairs['Ratio'], timeperiod = 28)
+    
+    
+    
     print(pairs)
     
     
@@ -262,7 +269,9 @@ def calculate_correlation(Stock_1_file, Stock_2_file, Source_File_Folder):
     # Create graph
     print("Creating Plot for %s and %s" %(stock_1_name, stock_2_name ))
     
-    fig, axs = plt.subplots(3, 1, constrained_layout=True,figsize=(16, 12))
+    fig, axs = plt.subplots(4, 1, constrained_layout=True,figsize=(16, 12))
+    
+    # Ratio
     pairs['Ratio'].plot(ax=axs[0], lw=2, label='Ratio')
     pairs['Ratio_Moving_Avg'].plot(ax=axs[0], lw=1,style='--', label='Ratio Moving Avg')
     pairs['Upper_band'].plot(ax=axs[0], lw= 1,style='--', label='Upper Band')
@@ -273,15 +282,20 @@ def calculate_correlation(Stock_1_file, Stock_2_file, Source_File_Folder):
     axs[0].grid()
     axs[0].legend(loc='upper left')
     
-    pairs[stock_1_name + '_Close'].plot(ax=axs[1], lw=1, label=stock_1_name + '_Close')
-    pairs[stock_2_name + '_Close'].plot(ax=axs[1], lw=1, label=stock_2_name + '_Close')
+    
+    # Ratio RSI
+    pairs['Ratio_RSI14'].plot(ax=axs[1], lw=1, label='Ratio_RSI14')
+    pairs['Ratio_RSI28'].plot(ax=axs[1], lw=1, label='Ratio_RSI28')
+    axs[1].axhline(y=70, lw=1, color='r')
+    axs[1].axhline(y=30, lw=1, color='r')
     axs[1].set_xlabel('Date')
-    axs[1].set_title('Close Price')
-    axs[1].set_ylabel('Close Price')
+    axs[1].set_title('Ratio RSI')
+    axs[1].set_ylabel('Ratio RSI')
     axs[1].grid()
     axs[1].legend(loc='upper left')
     
     
+    # Spread
     pairs['Spread'].plot(ax=axs[2], lw=2, label='Spread')
     pairs['Spread_Moving_Avg'].plot(ax=axs[2], lw=1,style='--', label='Spread Moving Avg')
     pairs['Spread_Upper_band'].plot(ax=axs[2], lw= 1,style='--', label='Spread Upper Band')
@@ -291,6 +305,17 @@ def calculate_correlation(Stock_1_file, Stock_2_file, Source_File_Folder):
     axs[2].set_ylabel('Spread')
     axs[2].grid()
     axs[2].legend(loc='upper left')
+    
+    
+    # Stock Close Price
+    pairs[stock_1_name + '_Close'].plot(ax=axs[3], lw=1, label=stock_1_name + '_Close')
+    pairs[stock_2_name + '_Close'].plot(ax=axs[3], lw=1, label=stock_2_name + '_Close')
+    axs[3].set_xlabel('Date')
+    axs[3].set_title('Close Price')
+    axs[3].set_ylabel('Close Price')
+    axs[3].grid()
+    axs[3].legend(loc='upper left')
+    
     
     fig.suptitle(stock_1_name + ' VS ' + stock_2_name + ' ' + end_date, fontsize=16)
     fig.savefig(stock_output_path + stock_1_name + ' VS ' + stock_2_name + ' ' + end_date + '.png')
